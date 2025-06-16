@@ -15,11 +15,12 @@ class TransformComponent :
 protected:
     ~TransformComponent() = default; // защищенный деструктор ? TO-DO: what is it ?
 
+    void Delete() override {};
+
 public:
-    virtual void Transform(bool activate) = 0;
+    virtual void Transform() = 0;
     Vector3 Position;
     Vector3 Rotation;
-    Vector3 Scale;
-    
+    Vector3 Scale;    
 };
 

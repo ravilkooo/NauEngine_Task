@@ -1,4 +1,5 @@
 #include "Game.h"
+#include "SimpleEntity.h"
 
 Game::Game()
 {
@@ -14,6 +15,8 @@ Game::Game()
 	displayWindow = DisplayWindow(this, applicationName, hInstance, winWidth, winHeight);
 
 	renderSystem = new RenderSystem(&displayWindow);
+
+	scene->AddEntity(new SimpleEntity(renderSystem->GetDevice()));
 }
 
 void Game::Run()
@@ -62,7 +65,7 @@ void Game::Update(float deltaTime) {
 
 void Game::Render()
 {
-	// renderSystem->RenderScene(scene);
+	renderSystem->RenderScene(*scene);
 }
 
 Game::~Game()

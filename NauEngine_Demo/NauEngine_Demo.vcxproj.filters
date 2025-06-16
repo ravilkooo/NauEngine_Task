@@ -13,9 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Header Files\Component">
-      <UniqueIdentifier>{1b57cb65-6f8f-40b7-93f8-dda7356eec79}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Source Files\Component">
       <UniqueIdentifier>{1320b5e8-6f38-40f3-a9b7-1bda4089bacd}</UniqueIdentifier>
     </Filter>
@@ -25,21 +22,27 @@
     <Filter Include="Source Files\InputDevice">
       <UniqueIdentifier>{a80c0e0f-7d84-4aa3-8436-3293551329fc}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\ECS">
+      <UniqueIdentifier>{f0473169-369e-40b7-971e-408a8c01f098}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\ECS\Component">
+      <UniqueIdentifier>{1b57cb65-6f8f-40b7-93f8-dda7356eec79}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\Resources">
+      <UniqueIdentifier>{d55bd322-621e-4bb5-842f-45f5e3f1999e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\CustomObjects">
+      <UniqueIdentifier>{7cfd5bb4-d2cf-4a71-bcde-7e661f35a87e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Shader Files">
+      <UniqueIdentifier>{e0f70e13-11ac-4896-9193-bbf1a6cd8cd1}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="Entity.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
     <ClInclude Include="Scene.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="RenderSystem.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="ResourceManager.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="Mesh.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Game.h">
@@ -52,13 +55,13 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Component.h">
-      <Filter>Header Files\Component</Filter>
+      <Filter>Header Files\ECS\Component</Filter>
     </ClInclude>
     <ClInclude Include="RenderComponent.h">
-      <Filter>Header Files\Component</Filter>
+      <Filter>Header Files\ECS\Component</Filter>
     </ClInclude>
     <ClInclude Include="TransformComponent.h">
-      <Filter>Header Files\Component</Filter>
+      <Filter>Header Files\ECS\Component</Filter>
     </ClInclude>
     <ClInclude Include="InputDevice\Delegates.h">
       <Filter>Header Files\InputDevice</Filter>
@@ -68,6 +71,33 @@
     </ClInclude>
     <ClInclude Include="InputDevice\Keys.h">
       <Filter>Header Files\InputDevice</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity.h">
+      <Filter>Header Files\ECS</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh.h">
+      <Filter>Header Files\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="ResourceManager.h">
+      <Filter>Header Files\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Header Files\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="PixelShader.h">
+      <Filter>Header Files\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="VertexShader.h">
+      <Filter>Header Files\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="InputLayout.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="MeshUtils.h">
+      <Filter>Header Files\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="SimpleEntity.h">
+      <Filter>Header Files\CustomObjects</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -113,5 +143,31 @@
     <ClCompile Include="InputDevice\InputDevice.cpp">
       <Filter>Source Files\InputDevice</Filter>
     </ClCompile>
+    <ClCompile Include="SimpleEntity.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="Resource.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="PixelShader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="VertexShader.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="InputLayout.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+    <ClCompile Include="MeshUtils.cpp">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <FxCompile Include="Shaders\Cube_PShader.hlsl">
+      <Filter>Shader Files</Filter>
+    </FxCompile>
+    <FxCompile Include="Shaders\Cube_VShader.hlsl">
+      <Filter>Shader Files</Filter>
+    </FxCompile>
   </ItemGroup>
 </Project>

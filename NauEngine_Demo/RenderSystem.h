@@ -17,6 +17,10 @@ public:
 	// TO-DO: replace ptr with some smart ptr?
 	void RenderScene(const Scene& scene);
 
+	void StartFrame();
+	void EndFrame();
+
+
 	ID3D11Device* GetDevice() { return device.Get(); }
 	ID3D11DeviceContext* GetDeviceContext() { return context.Get(); }
 
@@ -43,4 +47,11 @@ protected:
 
 	UINT screenWidth = 1280;
 	UINT screenHeight = 720;
+
+	// pass stuff
+	// TO-DO: Com ptr ?
+	ID3D11RenderTargetView* renderTargetView;
+	D3D11_VIEWPORT viewport;
+	ID3D11Texture2D* pDepthStencil;
+	ID3D11DepthStencilView* pDSV;
 };
