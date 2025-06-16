@@ -1,5 +1,7 @@
 #include "RenderSystem.h"
 
+#include "RenderComponent.h"
+
 RenderSystem::RenderSystem(DisplayWindow* displayWin)
 {
 	HINSTANCE hInstance = GetModuleHandle(nullptr);
@@ -48,6 +50,16 @@ RenderSystem::RenderSystem(DisplayWindow* displayWin)
 
 void RenderSystem::RenderScene(const Scene& scene)
 {
+	/*
+	for (auto entity : scene.entities) {
+		RenderComponent* renderableEntity = dynamic_cast<RenderComponent*>(entity);
+		if (renderableEntity) {
+			// Object implements Interface
+			renderableEntity->Render();
+		}
+	}
+	*/
+
 	// Passes
 	/*
 	for (RenderPass* pass : passes) {

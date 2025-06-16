@@ -1,5 +1,14 @@
 #pragma once
 #include "Component.h"
+
+#include <wrl.h>
+#include <d3d11.h>
+#include <directxmath.h>
+#include <SimpleMath.h>
+
+using namespace DirectX;
+using namespace DirectX::SimpleMath;
+
 class TransformComponent :
     public Component
 {
@@ -8,5 +17,9 @@ protected:
 
 public:
     virtual void Transform(bool activate) = 0;
+    Vector3 Position;
+    Vector3 Rotation;
+    Vector3 Scale;
+    
 };
 
