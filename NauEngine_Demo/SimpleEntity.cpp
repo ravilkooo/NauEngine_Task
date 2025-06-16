@@ -41,6 +41,6 @@ SimpleEntity::SimpleEntity(ID3D11Device* device) {
 			D3D11_INPUT_PER_VERTEX_DATA,
 			0 };
 
-	renderComp.inputLayout = new InputLayout(device, IALayoutInputElements, 3, vertexShader->GetBytecode());
+	renderComp.inputLayout = new InputLayout(device, IALayoutInputElements, 3, renderComp.vertexShader->GetBytecode());
 }
 

@@ -1,6 +1,7 @@
 #include "RenderSystem.h"
 
 #include "RenderComponent.h"
+#include "TransformComponent.h"
 
 RenderSystem::RenderSystem(DisplayWindow* displayWin)
 {
@@ -91,10 +92,18 @@ void RenderSystem::RenderScene(const Scene& scene)
 	StartFrame();
 	for (auto entity : scene.entities) {
 		// std::cout << "?\n";
-		RenderComponent* renderableEntity = dynamic_cast<RenderComponent*>(entity);
-		if (renderableEntity) {
-			renderableEntity->Render(GetDeviceContext());
-			std::cout << "!\n";
+		if (entity->hasComponent<RenderComponent>())
+		//	entity->hasComponent<TransformComponent>()
+		{
+			// auto& transform = entity->getComponent<TransformComponent>();
+			auto& render = entity->getComponent<RenderComponent>();
+			render.Render(GetDeviceContext());
+			/*
+			render.mesh->draw(transform.position,
+				transform.rotation,
+				transform.scale,
+				render.material);
+			*/
 		}
 	}
 	EndFrame();

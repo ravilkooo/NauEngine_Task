@@ -12,13 +12,16 @@
 class RenderComponent :
     public Component
 {
-protected:
+public:
     ~RenderComponent() = default; // защищенный деструктор ? TO-DO: what is it ?
 
     void Delete() override {};
 
-public:
     void Render(ID3D11DeviceContext* context);
+
+    const std::type_info& getType() const override {
+        return typeid(RenderComponent);
+    }
 
     // TO-DO ptr
     std::shared_ptr<Mesh> mesh;

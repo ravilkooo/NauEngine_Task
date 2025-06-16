@@ -34,7 +34,7 @@ VSOutput main(VSInput input)
     */
     output.normal = input.normal;
     output.texcoord = input.texcoord;
-    output.position = float4(input.position, 1) * 0.1 + float4(0.5, 0.5, 2, 0);
+    output.position = float4(input.position * 0.1, 1) * float4(0.9, 1.6, 1, 1) + float4(0.5, 0.5, 0.5, 0);
     
     return output;
 }

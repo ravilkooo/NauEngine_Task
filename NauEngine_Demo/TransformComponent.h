@@ -12,12 +12,15 @@ using namespace DirectX::SimpleMath;
 class TransformComponent :
     public Component
 {
-protected:
+public:
     ~TransformComponent() = default; // защищенный деструктор ? TO-DO: what is it ?
 
     void Delete() override {};
 
-public:
+    const std::type_info& getType() const override {
+        return typeid(TransformComponent);
+    }
+
     virtual void Transform() = 0;
     Vector3 Position;
     Vector3 Rotation;
