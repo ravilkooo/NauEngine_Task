@@ -1,6 +1,8 @@
 #include "MeshUtils.h"
 #include "Mesh.h"
 
+#include "ResourceManager.h"
+
 #include <SimpleMath.h>
 
 using namespace DirectX;
@@ -93,5 +95,6 @@ std::shared_ptr<Mesh> CreateUnwrappedCubeMesh(ID3D11Device* device)
         indices.push_back(base + 2);
     }
 
-    return std::make_shared<Mesh>(device, vertices, indices);
+    //return std::make_shared<Mesh>(device, vertices, indices);
+    return ResourceManager::Instance().Load<Mesh>("CubeMesh", device, vertices, indices);
 }

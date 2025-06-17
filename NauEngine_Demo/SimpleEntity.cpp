@@ -5,8 +5,8 @@ SimpleEntity::SimpleEntity(ID3D11Device* device, int num) {
 	auto& renderComp = this->AddComponent<RenderComponent>();
 
 	renderComp.mesh = CreateUnwrappedCubeMesh(device);
-	renderComp.vertexShader = new VertexShader(device, L"./Shaders/Cube_VShader.hlsl");
-	renderComp.pixelShader = new PixelShader(device, L"./Shaders/Cube_PShader.hlsl");
+	renderComp.vertexShader = ResourceManager::Instance().Load<VertexShader>("SimpleEntity_VShader", device, L"./Shaders/Cube_VShader.hlsl");
+	renderComp.pixelShader = ResourceManager::Instance().Load<PixelShader>("SimpleEntity_PShader", device, L"./Shaders/Cube_PShader.hlsl");
 
 	UINT numInputElements = 3;
 	D3D11_INPUT_ELEMENT_DESC* IALayoutInputElements = (D3D11_INPUT_ELEMENT_DESC*)malloc(numInputElements * sizeof(D3D11_INPUT_ELEMENT_DESC));
@@ -39,7 +39,7 @@ SimpleEntity::SimpleEntity(ID3D11Device* device, int num) {
 			D3D11_INPUT_PER_VERTEX_DATA,
 			0 };
 
-	renderComp.inputLayout = new InputLayout(device, IALayoutInputElements, 3, renderComp.vertexShader->GetBytecode());
+	renderComp.inputLayout = ResourceManager::Instance().Load<InputLayout>("SimpleEntity_InputLayout", device, IALayoutInputElements, 3, renderComp.vertexShader->GetBytecode());
 
 	auto& transformComp = this->AddComponent<TransformComponent>(device);
 	transformComp.SetPosition({ 0, 0, num * 3.0f / 100 });

@@ -25,9 +25,9 @@ public:
 
     // TO-DO ptr
     std::shared_ptr<Mesh> mesh;
-    InputLayout* inputLayout;
-    VertexShader* vertexShader;
-    PixelShader* pixelShader;
+    std::shared_ptr<InputLayout> inputLayout;
+    std::shared_ptr<VertexShader> vertexShader;
+    std::shared_ptr<PixelShader> pixelShader;
 
     // To-do: Material
 };

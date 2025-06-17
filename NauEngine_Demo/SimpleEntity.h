@@ -2,6 +2,8 @@
 
 #include "Entity.h"
 
+#include "ResourceManager.h"
+
 #include "RenderComponent.h"
 #include "TransformComponent.h"
 
