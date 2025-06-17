@@ -2,7 +2,22 @@
 
 #include <memory>
 #include <d3d11.h>
+
+#include <assimp/Importer.hpp>
+#include <assimp/scene.h>
+#include <assimp/postprocess.h>
+#include <filesystem>
+
 class Mesh;
 
-std::shared_ptr<Mesh> CreateUnwrappedCubeMesh(ID3D11Device* device);
+enum VertexAttributesFlags : UINT {
+    POSITION = 0x1,
+    COLOR = 0x2,
+    TEXTURE = 0x4,
+    NORMAL = 0x8,
+};
 
+std::shared_ptr<Mesh> LoadModel(const std::string& path,
+    UINT attrFlags = VertexAttributesFlags::POSITION);
+
+std::shared_ptr<Mesh> CreateUnwrappedCubeMesh(ID3D11Device* device);
