@@ -13,9 +13,6 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
-    <Filter Include="Source Files\Component">
-      <UniqueIdentifier>{1320b5e8-6f38-40f3-a9b7-1bda4089bacd}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\InputDevice">
       <UniqueIdentifier>{de56ec1f-4691-4690-a059-99b1c278bb77}</UniqueIdentifier>
     </Filter>
@@ -28,14 +25,29 @@
     <Filter Include="Header Files\ECS\Component">
       <UniqueIdentifier>{1b57cb65-6f8f-40b7-93f8-dda7356eec79}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\Resources">
-      <UniqueIdentifier>{d55bd322-621e-4bb5-842f-45f5e3f1999e}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\CustomObjects">
       <UniqueIdentifier>{7cfd5bb4-d2cf-4a71-bcde-7e661f35a87e}</UniqueIdentifier>
     </Filter>
     <Filter Include="Shader Files">
       <UniqueIdentifier>{e0f70e13-11ac-4896-9193-bbf1a6cd8cd1}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\ResourceManager">
+      <UniqueIdentifier>{d55bd322-621e-4bb5-842f-45f5e3f1999e}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ResorceManager">
+      <UniqueIdentifier>{70c99a99-9064-42fd-bdde-a7a08fbbf02d}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ECS">
+      <UniqueIdentifier>{02149e69-40a0-422d-8a04-b432c570e845}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ECS\Component">
+      <UniqueIdentifier>{1320b5e8-6f38-40f3-a9b7-1bda4089bacd}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\ResorceManager\Resources">
+      <UniqueIdentifier>{ed5e96b2-4dfd-46ea-8e2d-2e9a1cbd6c5f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\ResourceManager\Resources">
+      <UniqueIdentifier>{eedd5a5c-f590-4136-a2ff-563a4d73fbd3}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -75,45 +87,45 @@
     <ClInclude Include="Entity.h">
       <Filter>Header Files\ECS</Filter>
     </ClInclude>
-    <ClInclude Include="Mesh.h">
-      <Filter>Header Files\Resources</Filter>
-    </ClInclude>
     <ClInclude Include="ResourceManager.h">
-      <Filter>Header Files\Resources</Filter>
-    </ClInclude>
-    <ClInclude Include="Resource.h">
-      <Filter>Header Files\Resources</Filter>
-    </ClInclude>
-    <ClInclude Include="PixelShader.h">
-      <Filter>Header Files\Resources</Filter>
-    </ClInclude>
-    <ClInclude Include="VertexShader.h">
-      <Filter>Header Files\Resources</Filter>
-    </ClInclude>
-    <ClInclude Include="InputLayout.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="MeshUtils.h">
-      <Filter>Header Files\Resources</Filter>
+      <Filter>Header Files\ResourceManager</Filter>
     </ClInclude>
     <ClInclude Include="SimpleEntity.h">
       <Filter>Header Files\CustomObjects</Filter>
     </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Header Files\ECS</Filter>
+    </ClInclude>
+    <ClInclude Include="ConstantBuffer.h">
+      <Filter>Header Files\ResourceManager\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="InputLayout.h">
+      <Filter>Header Files\ResourceManager\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="Mesh.h">
+      <Filter>Header Files\ResourceManager\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="PixelShader.h">
+      <Filter>Header Files\ResourceManager\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="TransformCBuffer.h">
+      <Filter>Header Files\ResourceManager\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="VertexShader.h">
+      <Filter>Header Files\ResourceManager\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="Resource.h">
+      <Filter>Header Files\ResourceManager\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="MeshUtils.h">
+      <Filter>Header Files\ResourceManager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Entity.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="Scene.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="RenderSystem.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="ResourceManager.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="Mesh.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Game.cpp">
@@ -129,13 +141,13 @@
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Component.cpp">
-      <Filter>Source Files\Component</Filter>
+      <Filter>Source Files\ECS\Component</Filter>
     </ClCompile>
     <ClCompile Include="RenderComponent.cpp">
-      <Filter>Source Files\Component</Filter>
+      <Filter>Source Files\ECS\Component</Filter>
     </ClCompile>
     <ClCompile Include="TransformComponent.cpp">
-      <Filter>Source Files\Component</Filter>
+      <Filter>Source Files\ECS\Component</Filter>
     </ClCompile>
     <ClCompile Include="InputDevice\Delegates.cpp">
       <Filter>Source Files\InputDevice</Filter>
@@ -146,20 +158,35 @@
     <ClCompile Include="SimpleEntity.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
-    <ClCompile Include="Resource.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="MeshUtils.cpp">
+      <Filter>Source Files\ResorceManager</Filter>
     </ClCompile>
-    <ClCompile Include="PixelShader.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="ResourceManager.cpp">
+      <Filter>Source Files\ResorceManager</Filter>
     </ClCompile>
-    <ClCompile Include="VertexShader.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="Entity.cpp">
+      <Filter>Source Files\ECS</Filter>
+    </ClCompile>
+    <ClCompile Include="Camera.cpp">
+      <Filter>Source Files\ECS</Filter>
+    </ClCompile>
+    <ClCompile Include="Mesh.cpp">
+      <Filter>Source Files\ResorceManager\Resources</Filter>
     </ClCompile>
     <ClCompile Include="InputLayout.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\ResorceManager\Resources</Filter>
     </ClCompile>
-    <ClCompile Include="MeshUtils.cpp">
-      <Filter>Source Files</Filter>
+    <ClCompile Include="PixelShader.cpp">
+      <Filter>Source Files\ResorceManager\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="Resource.cpp">
+      <Filter>Source Files\ResorceManager\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="TransformCBuffer.cpp">
+      <Filter>Source Files\ResorceManager\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="VertexShader.cpp">
+      <Filter>Source Files\ResorceManager\Resources</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

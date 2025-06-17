@@ -141,7 +141,9 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Camera.h" />
     <ClInclude Include="Component.h" />
+    <ClInclude Include="ConstantBuffer.h" />
     <ClInclude Include="DisplayWindow.h" />
     <ClInclude Include="Entity.h" />
     <ClInclude Include="Game.h" />
@@ -159,10 +161,12 @@
     <ClInclude Include="Resource.h" />
     <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="Scene.h" />
+    <ClInclude Include="TransformCBuffer.h" />
     <ClInclude Include="TransformComponent.h" />
     <ClInclude Include="VertexShader.h" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Camera.cpp" />
     <ClCompile Include="Component.cpp" />
     <ClCompile Include="DisplayWindow.cpp" />
     <ClCompile Include="Entity.cpp" />
@@ -181,6 +185,7 @@
     <ClCompile Include="ResourceManager.cpp" />
     <ClCompile Include="Scene.cpp" />
     <ClCompile Include="SimpleEntity.cpp" />
+    <ClCompile Include="TransformCBuffer.cpp" />
     <ClCompile Include="TransformComponent.cpp" />
     <ClCompile Include="VertexShader.cpp" />
   </ItemGroup>

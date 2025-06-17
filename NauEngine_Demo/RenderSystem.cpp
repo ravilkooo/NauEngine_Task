@@ -84,7 +84,9 @@ RenderSystem::RenderSystem(DisplayWindow* displayWin)
 	viewport.MinDepth = 0;
 	viewport.MaxDepth = 1.0f;
 
-
+	mainCamera = new Camera(device.Get(), 16.0 / 9.0);
+	mainCamera->SetPosition({ 0,0,-10 });
+	
 }
 
 void RenderSystem::RenderScene(const Scene& scene)
@@ -92,12 +94,15 @@ void RenderSystem::RenderScene(const Scene& scene)
 	StartFrame();
 	for (auto entity : scene.entities) {
 		// std::cout << "?\n";
-		if (entity->hasComponent<RenderComponent>())
-		//	entity->hasComponent<TransformComponent>()
+		if (entity->HasComponent<RenderComponent>()
+			&& entity->HasComponent<TransformComponent>())
 		{
-			// auto& transform = entity->getComponent<TransformComponent>();
-			auto& render = entity->getComponent<RenderComponent>();
+			auto& transform = entity->GetComponent<TransformComponent>();
+			auto& render = entity->GetComponent<RenderComponent>();
+			transform.Bind(GetDeviceContext());
 			render.Render(GetDeviceContext());
+
+			
 			/*
 			render.mesh->draw(transform.position,
 				transform.rotation,
@@ -128,6 +133,10 @@ void RenderSystem::StartFrame()
 	context->ClearRenderTargetView(renderTargetView, color);
 	context->ClearDepthStencilView(pDSV, D3D11_CLEAR_DEPTH, 1.0f, 0u);
 	context->RSSetViewports(1, &viewport);
+
+	// bind camera const buffer
+	mainCamera->UpdateBuffer(GetDeviceContext());
+	mainCamera->cameraBuffer->Bind(GetDeviceContext());
 }
 
 void RenderSystem::EndFrame()

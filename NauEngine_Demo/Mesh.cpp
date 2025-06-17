@@ -37,6 +37,14 @@ Mesh::Mesh(ID3D11Device* device, const std::vector<Vertex>& vertices, const std:
     rastDesc.FillMode = D3D11_FILL_SOLID;
     device->CreateRasterizerState(&rastDesc, &m_rasterizer);
 
+
+    D3D11_DEPTH_STENCIL_DESC dsDesc = CD3D11_DEPTH_STENCIL_DESC(CD3D11_DEFAULT{});
+    dsDesc.DepthEnable = TRUE;
+    // dsDesc.DepthWriteMask = D3D11_DEPTH_WRITE_MASK_ZERO;
+    dsDesc.DepthWriteMask = D3D11_DEPTH_WRITE_MASK_ALL;
+    dsDesc.DepthFunc = D3D11_COMPARISON_LESS;
+    device->CreateDepthStencilState(&dsDesc, &m_depthState);
+
 }
 
 void Mesh::Draw(ID3D11DeviceContext* context) const
@@ -47,6 +55,7 @@ void Mesh::Draw(ID3D11DeviceContext* context) const
     context->IASetIndexBuffer(m_indexBuffer.Get(), DXGI_FORMAT_R32_UINT, 0);
     context->IASetPrimitiveTopology(D3D11_PRIMITIVE_TOPOLOGY_TRIANGLELIST);
     context->RSSetState(m_rasterizer.Get());
+    context->OMSetDepthStencilState(m_depthState.Get(), 0);
     // context->
 
 

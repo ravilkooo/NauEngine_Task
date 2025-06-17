@@ -3,9 +3,9 @@
 #include <wrl.h>    
 #include <directxmath.h>
 
-
 #include "DisplayWindow.h"
 #include "Scene.h"
+#include "Camera.h"
 
 //#include "GBuffer.h"
 
@@ -24,8 +24,8 @@ public:
 	ID3D11Device* GetDevice() { return device.Get(); }
 	ID3D11DeviceContext* GetDeviceContext() { return context.Get(); }
 
-	// void SetMainCamera(Camera* camera) { this->mainCamera = camera; }
-	// Camera* GetMainCamera() { return mainCamera; };
+	void SetMainCamera(Camera* camera) { this->mainCamera = camera; }
+	Camera* GetMainCamera() { return mainCamera; };
 
 	ID3D11Texture2D* GetBackBuffer() { return backBuffer.Get(); }
 
@@ -54,4 +54,7 @@ protected:
 	D3D11_VIEWPORT viewport;
 	ID3D11Texture2D* pDepthStencil;
 	ID3D11DepthStencilView* pDSV;
+
+	// TO-DO: Com ptr ?
+	Camera* mainCamera;
 };

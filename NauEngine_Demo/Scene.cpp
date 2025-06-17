@@ -22,11 +22,11 @@ void Scene::RemoveEntity(Entity* entity)
     entities.erase(std::remove(entities.begin(), entities.end(), entity), entities.end());
 }
 
-void Scene::Update(float deltaTime)
+void Scene::Tick(float deltaTime)
 {
     for (auto entity : entities)
     {
-        // entity->Update(deltaTime);
+        entity->Tick(deltaTime);
     }
 }
 

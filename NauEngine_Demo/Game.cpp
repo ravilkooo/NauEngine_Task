@@ -16,7 +16,10 @@ Game::Game()
 
 	renderSystem = new RenderSystem(&displayWindow);
 
-	scene->AddEntity(new SimpleEntity(renderSystem->GetDevice()));
+	for (size_t i = 0; i < 100; i++)
+	{
+		scene->AddEntity(new SimpleEntity(renderSystem->GetDevice(), i * 1));
+	}
 }
 
 void Game::Run()
@@ -54,13 +57,13 @@ void Game::Run()
 			frameCount = 0;
 		}
 
-		Update(deltaTime);
+		Tick(deltaTime);
 		Render();
 	}
 }
 
-void Game::Update(float deltaTime) {
-
+void Game::Tick(float deltaTime) {
+	scene->Tick(deltaTime);
 }
 
 void Game::Render()

@@ -2,9 +2,9 @@
 
 #include "Resource.h"
 #include <memory>
-#include <d3d11.h>
 #include <vector>
 #include <stdexcept>
+#include <d3d11.h>
 #include <wrl/client.h>
 #include <SimpleMath.h>
 
@@ -34,5 +34,6 @@ private:
     UINT m_indexCount = 0;
 
     Microsoft::WRL::ComPtr<ID3D11RasterizerState> m_rasterizer;
+    Microsoft::WRL::ComPtr<ID3D11DepthStencilState> m_depthState;
 };
 

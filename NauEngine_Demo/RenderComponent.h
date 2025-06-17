@@ -15,7 +15,7 @@ class RenderComponent :
 public:
     ~RenderComponent() = default; // защищенный деструктор ? TO-DO: what is it ?
 
-    void Delete() override {};
+    // void Delete() override {};
 
     void Render(ID3D11DeviceContext* context);
 

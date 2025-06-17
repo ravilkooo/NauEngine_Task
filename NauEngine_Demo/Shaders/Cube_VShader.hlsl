@@ -21,6 +21,17 @@ struct VSOutput
     float2 texcoord : TEXCOORD0;
 };
 
+cbuffer TransformCBuf : register(b0)
+{
+    row_major float4x4 wMat;
+    row_major float4x4 wInvTransposeMat;
+}
+
+cbuffer CameraCBuf : register(b1)
+{
+    row_major float4x4 viewProjMat;
+}
+
 VSOutput main(VSInput input)
 {
     VSOutput output;
@@ -34,7 +45,10 @@ VSOutput main(VSInput input)
     */
     output.normal = input.normal;
     output.texcoord = input.texcoord;
-    output.position = float4(input.position * 0.1, 1) * float4(0.9, 1.6, 1, 1) + float4(0.5, 0.5, 0.5, 0);
+    float4 worldPos = mul(float4(input.position, 1.0f), wMat);
+    //float4 worldPos = float4(input.position * 0.1, 1) * float4(0.9, 1.6, 1, 1) + float4(0.5, 0.5, 0.5, 0);
+    worldPos = mul(worldPos, viewProjMat);
+    output.position = worldPos;
     
     return output;
 }

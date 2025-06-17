@@ -3,8 +3,9 @@
 #include <vector>
 #include <memory>
 #include <iostream>
+#include "Component.h"
 
-class Component;
+// class Component;
 
 class Entity
 {
@@ -20,7 +21,7 @@ public:
     }
 
     template<typename T>
-    bool hasComponent() const {
+    bool HasComponent() const {
         for (auto& comp : components) {
             if (typeid(T) == comp->getType()) return true;
         }
@@ -28,7 +29,7 @@ public:
     }
 
     template<typename T>
-    T& getComponent() {
+    T& GetComponent() {
         for (auto& comp : components) {
             if (typeid(T) == comp->getType()) {
                 return *static_cast<T*>(comp.get());
@@ -36,6 +37,8 @@ public:
         }
         throw std::runtime_error("Component not found");
     }
+
+    virtual void Tick(float deltaTime) = 0;
 
 protected:
     std::vector<std::unique_ptr<Component>> components;

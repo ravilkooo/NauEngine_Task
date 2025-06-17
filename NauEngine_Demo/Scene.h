@@ -12,7 +12,7 @@ public:
     // To-do smart ptr?
     void AddEntity(Entity* node);
     void RemoveEntity(Entity* node);
-    void Update(float deltaTime);
+    void Tick(float deltaTime);
     void Draw();
 
     // To-do smart ptr?

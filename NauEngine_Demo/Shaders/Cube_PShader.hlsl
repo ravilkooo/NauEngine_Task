@@ -12,6 +12,9 @@ float4 main(PSInput input) : SV_TARGET
 {
     // float4 color = tex.Sample(samp, input.texcoord);
     // return color;
-    float4 color = float4(input.texcoord, 0, 1);
+    // float4 color = float4(input.texcoord, 0, 1);
+    float4 color = float4(sin(input.texcoord.x * 40) * sin(input.texcoord.y * 30), 0, 0, 1);
+    color.x = color * 0.5 + 0.5;
+    color.z = 1 - color.x;
     return color;
 }

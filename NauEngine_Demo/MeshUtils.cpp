@@ -86,11 +86,11 @@ std::shared_ptr<Mesh> CreateUnwrappedCubeMesh(ID3D11Device* device)
         // Индексы двух треугольников для этой грани
         int base = f * 4;
         indices.push_back(base + 0);
+        indices.push_back(base + 2);
         indices.push_back(base + 1);
-        indices.push_back(base + 2);
         indices.push_back(base + 0);
-        indices.push_back(base + 2);
         indices.push_back(base + 3);
+        indices.push_back(base + 2);
     }
 
     return std::make_shared<Mesh>(device, vertices, indices);

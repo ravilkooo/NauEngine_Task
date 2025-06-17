@@ -13,7 +13,7 @@ public:
 
     void Run();
 
-    void Update(float deltaTime);
+    void Tick(float deltaTime);
     void Render();
 
     GameTimer timer;
