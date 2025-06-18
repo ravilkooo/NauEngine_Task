@@ -1,5 +1,4 @@
 #pragma once
-
 #include "Entity.h"
 
 #include "ResourceManager.h"
@@ -15,13 +14,14 @@
 
 #include "TransformCBuffer.h"
 
-class SimpleEntity : public Entity
+class PlaneEntity :
+    public Entity
 {
 public:
 	//TransformComponent& transfromComp;
 	//RenderComponent& renderComp;
-	SimpleEntity() = default;
-	SimpleEntity(ID3D11Device* device, int num);
+	PlaneEntity() = default;
+	PlaneEntity(ID3D11Device* device);
 	void Tick(float deltaTime) override;
 
 	float accumTime;
@@ -32,3 +32,4 @@ public:
 	void to_json(json& j) override;
 	void from_json(ID3D11Device* device, const json& j) override;
 };
+

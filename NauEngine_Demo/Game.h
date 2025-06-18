@@ -34,5 +34,8 @@ public:
     int winHeight = 720;
 
     float deltaTime = 0.0f;
+
+    // Load/save scene
+    void LoadScene();
 };
 

@@ -6,6 +6,10 @@
 #include <assimp/postprocess.h>
 #include <filesystem>
 #include <unordered_map>
+#include <nlohmann_json/json.hpp>
+#include <d3d11.h>
+
+using json = nlohmann::json;
 
 class ResourceManager {
 public:
@@ -22,12 +26,16 @@ public:
         }
         auto resource = std::make_shared<T>(std::forward<Args>(args)...);
         resources[id] = resource;
+        resources[id]->resourceKey = id;
         return resource;
     }
 
     void Unload(const std::string& id) {
         resources.erase(id);
     }
+
+    void to_json(json& j);
+    void from_json(ID3D11Device* device, const json& j);
 
 private:
     ResourceManager() = default;

@@ -1,8 +1,9 @@
 #include "RenderComponent.h"
+#include "ResourceManager.h"
 
 void RenderComponent::Render(ID3D11DeviceContext* context)
 {
-	inputLayout->Bind(context);
+	// inputLayout->Bind(context);
 	vertexShader->Bind(context);
 	pixelShader->Bind(context);
 	mesh->Draw(context);
@@ -16,16 +17,16 @@ std::string RenderComponent::getTypeName() const
 void RenderComponent::to_json(json& j)
 {
 	j = json{
-		{ "mesh", "rc_mesh" }
-		/*
 		{"mesh", mesh ? mesh->GetResourceKey() : ""},
-		{"inputLayout", inputLayout ? inputLayout->GetResourceKey() : ""},
+		// {"inputLayout", inputLayout ? inputLayout->GetResourceKey() : ""},
 		{"vertexShader", vertexShader ? vertexShader->GetResourceKey() : ""},
 		{"pixelShader", pixelShader ? pixelShader->GetResourceKey() : ""}
-		*/
 	};
 }
 
-void RenderComponent::from_json(const json& j)
+void RenderComponent::from_json(ID3D11Device* device, const json& j)
 {
+	mesh = ResourceManager::Instance().Load<Mesh>(j.at("mesh").get<std::string>(), device, j.at("mesh").get<std::string>());
+ 	vertexShader = ResourceManager::Instance().Load<VertexShader>(j.at("vertexShader").get<std::string>(), device, j.at("vertexShader").get<std::string>());
+	pixelShader = ResourceManager::Instance().Load<PixelShader>(j.at("pixelShader").get<std::string>(), device, j.at("pixelShader").get<std::string>());
 }

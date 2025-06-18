@@ -3,6 +3,11 @@
 #include "TransformCBuffer.h"
 
 TransformComponent::TransformComponent(ID3D11Device* device) {
+    SetupBuffer(device);
+}
+
+void TransformComponent::SetupBuffer(ID3D11Device* device)
+{
     transformBuffer = new TransformCBuffer(device, this, 0u);
 }
 
@@ -93,6 +98,16 @@ void TransformComponent::to_json(json& j)
     };
 }
 
-void TransformComponent::from_json(const json& j)
+void TransformComponent::from_json(ID3D11Device* device, const json& j)
 {
+    auto pos = j.at("position");
+    position = { pos[0].get<float>(), pos[1].get<float>(), pos[2].get<float>() };
+
+    auto rot = j.at("rotation");
+    rotation = { rot[0].get<float>(), rot[1].get<float>(), rot[2].get<float>() };
+
+    auto scale = j.at("scaleFactor");
+    scaleFactor = { scale[0].get<float>(), scale[1].get<float>(), scale[2].get<float>() };
+
+    SetupBuffer(device);
 }

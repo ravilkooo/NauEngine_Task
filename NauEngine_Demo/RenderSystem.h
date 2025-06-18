@@ -24,8 +24,8 @@ public:
 	ID3D11Device* GetDevice() { return device.Get(); }
 	ID3D11DeviceContext* GetDeviceContext() { return context.Get(); }
 
-	void SetMainCamera(Camera* camera) { this->mainCamera = camera; }
-	Camera* GetMainCamera() { return mainCamera; };
+	void SetMainCamera(std::shared_ptr<Camera> camera) { this->mainCamera = camera; }
+	std::shared_ptr<Camera> GetMainCamera() { return mainCamera; };
 
 	ID3D11Texture2D* GetBackBuffer() { return backBuffer.Get(); }
 
@@ -56,5 +56,5 @@ protected:
 	ID3D11DepthStencilView* pDSV;
 
 	// TO-DO: Com ptr ?
-	Camera* mainCamera;
+	std::shared_ptr<Camera> mainCamera;
 };

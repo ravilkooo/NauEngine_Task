@@ -84,15 +84,13 @@ RenderSystem::RenderSystem(DisplayWindow* displayWin)
 	viewport.MinDepth = 0;
 	viewport.MaxDepth = 1.0f;
 
-	mainCamera = new Camera(device.Get(), 16.0 / 9.0);
-	mainCamera->SetPosition({ 0,0,-10 });
-	
+	mainCamera = std::make_shared<Camera>(device.Get(), screenWidth * 1.0f / screenHeight);
 }
 
 void RenderSystem::RenderScene(const Scene& scene)
 {
 	StartFrame();
-	for (auto entity : scene.entities) {
+	for (auto&	 entity : scene.entities) {
 		// std::cout << "?\n";
 		if (entity->HasComponent<RenderComponent>()
 			&& entity->HasComponent<TransformComponent>())

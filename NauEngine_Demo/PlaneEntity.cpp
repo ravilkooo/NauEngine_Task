@@ -1,35 +1,32 @@
-#include "SimpleEntity.h"
+#include "PlaneEntity.h"
 
-
-SimpleEntity::SimpleEntity(ID3D11Device* device, int num) {
+PlaneEntity::PlaneEntity(ID3D11Device* device) {
 	auto& renderComp = this->AddComponent<RenderComponent>();
 
-	//renderComp.mesh = CreateUnwrappedCubeMesh(device);
-	renderComp.mesh = ResourceManager::Instance().Load<Mesh>("./Models/gamepad.obj", device, "./Models/gamepad.obj");
+	renderComp.mesh = ResourceManager::Instance().Load<Mesh>("./Models/plane.obj", device, "./Models/plane.obj");
 
 	renderComp.vertexShader = ResourceManager::Instance().Load<VertexShader>("./Shaders/Cube_VShader.hlsl", device, L"./Shaders/Cube_VShader.hlsl");
 	renderComp.pixelShader = ResourceManager::Instance().Load<PixelShader>("./Shaders/Cube_PShader.hlsl", device, L"./Shaders/Cube_PShader.hlsl");
 
 	auto& transformComp = this->AddComponent<TransformComponent>(device);
-	transformComp.SetPosition({ 0, 0, num * 3.0f / 100 });
-	transformComp.SetScale(num * 2.0f / 100);
+	transformComp.SetPosition({ 4, 0, 0 });
 }
 
-void SimpleEntity::Tick(float deltaTime) {
+void PlaneEntity::Tick(float deltaTime) {
 	accumTime += deltaTime;
 	auto& transformComp = this->GetComponent<TransformComponent>();
-	transformComp.Rotate({ deltaTime * 2, 0, 0 });
 
-	transformComp.SetPosition({ 4.0f * transformComp.scaleFactor.x * cos(transformComp.scaleFactor.x * accumTime),
-		4.0f * transformComp.scaleFactor.x * sin(transformComp.scaleFactor.x * accumTime), 3});
+	transformComp.SetRotation({ 0, -accumTime - DirectX::XM_PIDIV2, 0 });
+	transformComp.SetPosition({ 4.0f * cos(accumTime), 0,
+		4.0f * sin(accumTime) });
 }
 
-std::string SimpleEntity::getTypeName() const
+std::string PlaneEntity::getTypeName() const
 {
-	return "SimpleEntity";
+	return "PlaneEntity";
 }
 
-void SimpleEntity::to_json(json& j)
+void PlaneEntity::to_json(json& j)
 {
 	j["type"] = getTypeName();
 	j["components"] = json::array();
@@ -43,7 +40,7 @@ void SimpleEntity::to_json(json& j)
 
 }
 
-void SimpleEntity::from_json(ID3D11Device* device, const json& j)
+void PlaneEntity::from_json(ID3D11Device* device, const json& j)
 {
 	assert(j["type"] == getTypeName());
 	for (const auto& j_c : j["components"]) {

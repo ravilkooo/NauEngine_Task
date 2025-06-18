@@ -6,10 +6,12 @@ using namespace DirectX;
 using namespace DirectX::SimpleMath;
 
 
-Mesh::Mesh(ID3D11Device* device, const std::string& path, UINT attrFlags)
+Mesh::Mesh(ID3D11Device* device, const std::string& path)
 {
     std::vector<Vertex> vertices;
     std::vector<uint32_t> indices;
+
+    UINT attrFlags = VertexAttributesFlags::POSITION | VertexAttributesFlags::UV | VertexAttributesFlags::NORMAL;
 
     if (!LoadModel(vertices, indices, path, attrFlags))
         CreateUnwrappedCubeMesh(vertices, indices);

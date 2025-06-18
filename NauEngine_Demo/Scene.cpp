@@ -1,47 +1,25 @@
 #include "Scene.h"
+#include "SimpleEntity.h"
+#include "PlaneEntity.h"
 
 Scene::Scene()
 {
-    /*
-    json data;
-    std::ofstream outfstream("scene_out.json");
-    stuff_to_json(data, Json_stuff({4,1,4}));
-    outfstream << std::setw(4) << data << std::endl;
-    */
-    /*
-    json data;
-    std::ifstream f("scene_out.json");
-    f >> data;
-    Json_stuff t2;
-    t2.from_json(data);
-    std::cout << t2.x << " " << t2.y << " " << t2.z << "\n";
-    // = data.get<Json_stuff>(); // вызывает from_json
-    */
 
 }
 
-Scene::~Scene()
+void Scene::AddEntity(std::unique_ptr<Entity> entity)
 {
-
-    for (auto entity : entities)
-    {
-        delete entity;
-    }
+    entities.push_back(std::move(entity));
 }
 
-void Scene::AddEntity(Entity* entity)
-{
-    entities.push_back(entity);
-}
-
-void Scene::RemoveEntity(Entity* entity)
+void Scene::RemoveEntity(std::unique_ptr<Entity> entity)
 {
     entities.erase(std::remove(entities.begin(), entities.end(), entity), entities.end());
 }
 
 void Scene::Tick(float deltaTime)
 {
-    for (auto entity : entities)
+    for (const auto& entity : entities)
     {
         entity->Tick(deltaTime);
     }
@@ -56,23 +34,28 @@ void Scene::to_json(json& j)
         j_entities.push_back(j_e);
     }
     j["entities"] = j_entities;
+
+    json j_c; mainCamera->to_json(j_c);
+    j["camera"] = j_c;
 }
 
-void Scene::from_json(const json& j)
+void Scene::from_json(ID3D11Device* device, const json& j)
 {
     for (const auto& j_e : j["entities"]) {
         std::string type = j_e.at("type").get<std::string>();
-        /*
         std::unique_ptr<Entity> entity;
-        if (type == "Player") {
-            entity = std::make_unique<Player>();
+        if (type == "SimpleEntity") {
+            entity = std::make_unique<SimpleEntity>();
         }
-        else if (type == "Enemy") {
-            entity = std::make_unique<Enemy>();
-        } // ... другие типы
-        entity->from_json(j_e);
-        scene.entities.push_back(std::move(entity));
-        */
+        else if (type == "PlaneEntity") {
+            entity = std::make_unique<PlaneEntity>();
+        }
+        else {
+            continue;
+        }
+        entity->from_json(device, j_e);
+        entities.push_back(std::move(entity));
     }
-
+    mainCamera = std::make_shared<Camera>();
+    mainCamera->from_json(device, j["camera"]);
 }

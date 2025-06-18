@@ -52,6 +52,8 @@ public:
 	}
 	
 	// ~ConstantBuffer() override = default;
+
+	const std::string getTypeName() const override { return "ConstantBuffer"; };
 };
 
 class VertexConstantBuffer : public ConstantBuffer
@@ -66,6 +68,8 @@ public:
 	}
 
 	// ~VertexConstantBuffer() override = default;
+
+	const std::string getTypeName() const override { return "VertexConstantBuffer"; };
 };
 
 class PixelConstantBuffer : public ConstantBuffer
@@ -80,6 +84,8 @@ public:
 	}
 
 	// ~PixelConstantBuffer() override = default;
+
+	const std::string getTypeName() const override { return "PixelConstantBuffer"; };
 };
 
 
@@ -95,6 +101,8 @@ public:
 	}
 
 	// ~ComputeConstantBuffer() override = default;
+
+	const std::string getTypeName() const override { return "ComputeConstantBuffer"; };
 };
 /*
 */

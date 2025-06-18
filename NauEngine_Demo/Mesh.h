@@ -18,8 +18,9 @@ using namespace DirectX::SimpleMath;
 struct Vertex
 {
     Vector3 position;
-    Vector3 normal;
+    Vector4 color;
     Vector2 texcoord;
+    Vector3 normal;
 };
 
 enum VertexAttributesFlags : UINT {
@@ -29,11 +30,13 @@ enum VertexAttributesFlags : UINT {
     NORMAL = 0x8,
 };
 
+
 class Mesh : public Resource
 {
 public:
+    Mesh() {};
     Mesh(ID3D11Device* device,
-        const std::string& path, UINT attrFlags);
+        const std::string& path);
 
     bool LoadModel(std::vector<Vertex>& vertices,
         std::vector<uint32_t>& indices,
@@ -47,6 +50,9 @@ public:
     void Draw(ID3D11DeviceContext* context) const;
 
     UINT GetIndexCount() const { return m_indexCount; }
+
+
+    const std::string getTypeName() const override { return "Mesh"; };
 
 private:
     Microsoft::WRL::ComPtr<ID3D11Buffer> m_vertexBuffer;

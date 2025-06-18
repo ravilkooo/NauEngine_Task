@@ -22,6 +22,8 @@ public:
 	TransformCBuffer(ID3D11Device* device, TransformComponent* parent, UINT slot = 0u);
 	void Bind(ID3D11DeviceContext* context) noexcept;
 
+	const std::string getTypeName() const override { return "TransformCBuffer"; };
+
 	// ~TransformCBuffer() override = default;
 
 private:

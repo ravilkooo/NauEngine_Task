@@ -1,0 +1,20 @@
+{
+    "resources": [
+        {
+            "key": "./Models/gamepad.obj",
+            "type": "Mesh"
+        },
+        {
+            "key": "./Shaders/Cube_VShader.hlsl",
+            "type": "ConstantBuffer"
+        },
+        {
+            "key": "./Shaders/Cube_PShader.hlsl",
+            "type": "PixelShader"
+        },
+        {
+            "key": "./Models/plane.obj",
+            "type": "Mesh"
+        }
+    ]
+}

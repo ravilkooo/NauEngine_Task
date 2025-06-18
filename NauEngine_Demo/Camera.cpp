@@ -1,6 +1,8 @@
 #include "Camera.h"
 #include <iostream>
 
+Camera::Camera() {}
+
 Camera::Camera(ID3D11Device* device) : Camera(device, 1.0f) {
 
 }
@@ -12,7 +14,14 @@ Camera::Camera(ID3D11Device* device, float aspectRatio)
     cameraMode(CAMERA_MODE::FPS), orbitalTarget(0.0f, 0.0f, 0.0f),
     orbitalDistance(5.0f), minOrbitalDistance(5.0f),
     orbitalPitch(0.0f), orbitalYaw(0.0f),
-    spinAxis(0.0f, 1.0f, 0.0f), orbitalAngleSpeed(0.0f)
+    spinAxis(0.0f, 1.0f, 0.0f), orbitalAngleSpeed(0.0f),
+    viewWidth(aspectRatio*720), viewHeight(720),
+    referenceLen(1.0f)
+{
+    SetupBuffer(device);
+}
+
+void Camera::SetupBuffer(ID3D11Device* device)
 {
     Matrix viewProjMat = GetViewMatrix() * GetProjectionMatrix();
     cameraBuffer = new VertexConstantBuffer(device, sizeof(Matrix), &viewProjMat, 1u);
@@ -436,8 +445,42 @@ std::string Camera::getTypeName() const
 
 void Camera::to_json(json& j)
 {
+    j = json{
+        {"position", {position.x, position.y, position.z}},
+        {"target", {target.x, target.y, target.z}},
+        {"up", {up.x, up.y, up.z}},
+        {"isPerspective", isPerspective},
+        {"fov", fov},
+        {"aspectRatio", aspectRatio},
+        {"nearZ", nearZ},
+        {"farZ", farZ},
+        {"orthZ", orthZ},
+        {"referenceLen", referenceLen},
+        {"viewWidth", viewWidth},
+        {"viewHeight", viewHeight}
+    };
 }
 
-void Camera::from_json(const json& j)
+void Camera::from_json(ID3D11Device* device, const json& j)
 {
+    auto pos = j.at("position");
+    this->position = { pos[0].get<float>(), pos[1].get<float>(), pos[2].get<float>() };
+
+    auto tgt = j.at("target");
+    this->target = { tgt[0].get<float>(), tgt[1].get<float>(), tgt[2].get<float>() };
+
+    auto up = j.at("up");
+    this->up = { up[0].get<float>(), up[1].get<float>(), up[2].get<float>() };
+
+    this->isPerspective = j.at("isPerspective").get<bool>();
+    this->fov = j.at("fov").get<float>();
+    this->aspectRatio = j.at("aspectRatio").get<float>();
+    this->nearZ = j.at("nearZ").get<float>();
+    this->farZ = j.at("farZ").get<float>();
+    this->orthZ = j.at("orthZ").get<float>();
+    this->referenceLen = j.at("referenceLen").get<float>();
+    this->viewWidth = j.at("viewWidth").get<float>();
+    this->viewHeight = j.at("viewHeight").get<float>();
+
+    SetupBuffer(device);
 }

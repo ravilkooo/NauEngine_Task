@@ -19,10 +19,12 @@ public:
     {
         FPS, ORBITAL, FOLLOW
     };
-
+    Camera();
     Camera(ID3D11Device* device);
     Camera(ID3D11Device* device, float aspectRatio);
     ~Camera();
+
+    void SetupBuffer(ID3D11Device* device);
 
     void SetPosition(Vector3 position);
     Vector3 GetPosition();
@@ -141,7 +143,7 @@ public:
     std::string getTypeName() const override;
 
     void to_json(json& j) override;
-    void from_json(const json& j) override;
+    void from_json(ID3D11Device* device, const json& j) override;
 };
 
 #endif // CAMERA_H

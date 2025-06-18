@@ -2,6 +2,7 @@
 #include <typeinfo>
 #include <string>
 #include <nlohmann_json/json.hpp>
+#include <d3d11.h>
 
 using json = nlohmann::json;
 
@@ -16,5 +17,5 @@ public:
     virtual std::string getTypeName() const = 0;
 
     virtual void to_json(json& j) = 0;
-    virtual void from_json(const json& j) = 0;
+    virtual void from_json(ID3D11Device* device, const json& j) = 0;
 };

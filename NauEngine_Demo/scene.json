@@ -1,10 +1,38 @@
 {
+    "camera": {
+        "aspectRatio": 1.7777777910232544,
+        "farZ": 1000.0,
+        "fov": 0.7853981852531433,
+        "isPerspective": true,
+        "nearZ": 0.10000000149011612,
+        "orthZ": 10.0,
+        "position": [
+            0.0,
+            0.0,
+            -10.0
+        ],
+        "referenceLen": 1.0,
+        "target": [
+            0.0,
+            0.0,
+            1.0
+        ],
+        "up": [
+            0.0,
+            1.0,
+            0.0
+        ],
+        "viewHeight": 720.0,
+        "viewWidth": 1280.0
+    },
     "entities": [
         {
             "components": [
                 {
                     "data": {
-                        "mesh": "rc_mesh"
+                        "mesh": "./Models/gamepad.obj",
+                        "pixelShader": "./Shaders/Cube_PShader.hlsl",
+                        "vertexShader": "./Shaders/Cube_VShader.hlsl"
                     },
                     "type": "RenderComponent"
                 },
@@ -35,7 +63,9 @@
             "components": [
                 {
                     "data": {
-                        "mesh": "rc_mesh"
+                        "mesh": "./Models/gamepad.obj",
+                        "pixelShader": "./Shaders/Cube_PShader.hlsl",
+                        "vertexShader": "./Shaders/Cube_VShader.hlsl"
                     },
                     "type": "RenderComponent"
                 },
@@ -66,7 +96,9 @@
             "components": [
                 {
                     "data": {
-                        "mesh": "rc_mesh"
+                        "mesh": "./Models/gamepad.obj",
+                        "pixelShader": "./Shaders/Cube_PShader.hlsl",
+                        "vertexShader": "./Shaders/Cube_VShader.hlsl"
                     },
                     "type": "RenderComponent"
                 },
@@ -97,7 +129,9 @@
             "components": [
                 {
                     "data": {
-                        "mesh": "rc_mesh"
+                        "mesh": "./Models/gamepad.obj",
+                        "pixelShader": "./Shaders/Cube_PShader.hlsl",
+                        "vertexShader": "./Shaders/Cube_VShader.hlsl"
                     },
                     "type": "RenderComponent"
                 },
@@ -128,7 +162,9 @@
             "components": [
                 {
                     "data": {
-                        "mesh": "rc_mesh"
+                        "mesh": "./Models/gamepad.obj",
+                        "pixelShader": "./Shaders/Cube_PShader.hlsl",
+                        "vertexShader": "./Shaders/Cube_VShader.hlsl"
                     },
                     "type": "RenderComponent"
                 },
@@ -159,7 +195,9 @@
             "components": [
                 {
                     "data": {
-                        "mesh": "rc_mesh"
+                        "mesh": "./Models/gamepad.obj",
+                        "pixelShader": "./Shaders/Cube_PShader.hlsl",
+                        "vertexShader": "./Shaders/Cube_VShader.hlsl"
                     },
                     "type": "RenderComponent"
                 },
@@ -190,7 +228,9 @@
             "components": [
                 {
                     "data": {
-                        "mesh": "rc_mesh"
+                        "mesh": "./Models/gamepad.obj",
+                        "pixelShader": "./Shaders/Cube_PShader.hlsl",
+                        "vertexShader": "./Shaders/Cube_VShader.hlsl"
                     },
                     "type": "RenderComponent"
                 },
@@ -221,7 +261,9 @@
             "components": [
                 {
                     "data": {
-                        "mesh": "rc_mesh"
+                        "mesh": "./Models/gamepad.obj",
+                        "pixelShader": "./Shaders/Cube_PShader.hlsl",
+                        "vertexShader": "./Shaders/Cube_VShader.hlsl"
                     },
                     "type": "RenderComponent"
                 },
@@ -252,7 +294,9 @@
             "components": [
                 {
                     "data": {
-                        "mesh": "rc_mesh"
+                        "mesh": "./Models/gamepad.obj",
+                        "pixelShader": "./Shaders/Cube_PShader.hlsl",
+                        "vertexShader": "./Shaders/Cube_VShader.hlsl"
                     },
                     "type": "RenderComponent"
                 },
@@ -283,7 +327,9 @@
             "components": [
                 {
                     "data": {
-                        "mesh": "rc_mesh"
+                        "mesh": "./Models/gamepad.obj",
+                        "pixelShader": "./Shaders/Cube_PShader.hlsl",
+                        "vertexShader": "./Shaders/Cube_VShader.hlsl"
                     },
                     "type": "RenderComponent"
                 },
@@ -314,7 +360,9 @@
             "components": [
                 {
                     "data": {
-                        "mesh": "rc_mesh"
+                        "mesh": "./Models/gamepad.obj",
+                        "pixelShader": "./Shaders/Cube_PShader.hlsl",
+                        "vertexShader": "./Shaders/Cube_VShader.hlsl"
                     },
                     "type": "RenderComponent"
                 },
@@ -345,7 +393,9 @@
             "components": [
                 {
                     "data": {
-                        "mesh": "rc_mesh"
+                        "mesh": "./Models/gamepad.obj",
+                        "pixelShader": "./Shaders/Cube_PShader.hlsl",
+                        "vertexShader": "./Shaders/Cube_VShader.hlsl"
                     },
                     "type": "RenderComponent"
                 },
@@ -376,7 +426,9 @@
             "components": [
                 {
                     "data": {
-                        "mesh": "rc_mesh"
+                        "mesh": "./Models/gamepad.obj",
+                        "pixelShader": "./Shaders/Cube_PShader.hlsl",
+                        "vertexShader": "./Shaders/Cube_VShader.hlsl"
                     },
                     "type": "RenderComponent"
                 },
@@ -407,7 +459,9 @@
             "components": [
                 {
                     "data": {
-                        "mesh": "rc_mesh"
+                        "mesh": "./Models/gamepad.obj",
+                        "pixelShader": "./Shaders/Cube_PShader.hlsl",
+                        "vertexShader": "./Shaders/Cube_VShader.hlsl"
                     },
                     "type": "RenderComponent"
                 },
@@ -438,7 +492,9 @@
             "components": [
                 {
                     "data": {
-                        "mesh": "rc_mesh"
+                        "mesh": "./Models/gamepad.obj",
+                        "pixelShader": "./Shaders/Cube_PShader.hlsl",
+                        "vertexShader": "./Shaders/Cube_VShader.hlsl"
                     },
                     "type": "RenderComponent"
                 },
@@ -469,7 +525,9 @@
             "components": [
                 {
                     "data": {
-                        "mesh": "rc_mesh"
+                        "mesh": "./Models/gamepad.obj",
+                        "pixelShader": "./Shaders/Cube_PShader.hlsl",
+                        "vertexShader": "./Shaders/Cube_VShader.hlsl"
                     },
                     "type": "RenderComponent"
                 },
@@ -500,7 +558,9 @@
             "components": [
                 {
                     "data": {
-                        "mesh": "rc_mesh"
+                        "mesh": "./Models/gamepad.obj",
+                        "pixelShader": "./Shaders/Cube_PShader.hlsl",
+                        "vertexShader": "./Shaders/Cube_VShader.hlsl"
                     },
                     "type": "RenderComponent"
                 },
@@ -531,7 +591,9 @@
             "components": [
                 {
                     "data": {
-                        "mesh": "rc_mesh"
+                        "mesh": "./Models/gamepad.obj",
+                        "pixelShader": "./Shaders/Cube_PShader.hlsl",
+                        "vertexShader": "./Shaders/Cube_VShader.hlsl"
                     },
                     "type": "RenderComponent"
                 },
@@ -562,7 +624,9 @@
             "components": [
                 {
                     "data": {
-                        "mesh": "rc_mesh"
+                        "mesh": "./Models/gamepad.obj",
+                        "pixelShader": "./Shaders/Cube_PShader.hlsl",
+                        "vertexShader": "./Shaders/Cube_VShader.hlsl"
                     },
                     "type": "RenderComponent"
                 },
@@ -593,7 +657,9 @@
             "components": [
                 {
                     "data": {
-                        "mesh": "rc_mesh"
+                        "mesh": "./Models/gamepad.obj",
+                        "pixelShader": "./Shaders/Cube_PShader.hlsl",
+                        "vertexShader": "./Shaders/Cube_VShader.hlsl"
                     },
                     "type": "RenderComponent"
                 },
@@ -624,7 +690,9 @@
             "components": [
                 {
                     "data": {
-                        "mesh": "rc_mesh"
+                        "mesh": "./Models/gamepad.obj",
+                        "pixelShader": "./Shaders/Cube_PShader.hlsl",
+                        "vertexShader": "./Shaders/Cube_VShader.hlsl"
                     },
                     "type": "RenderComponent"
                 },
@@ -655,7 +723,9 @@
             "components": [
                 {
                     "data": {
-                        "mesh": "rc_mesh"
+                        "mesh": "./Models/gamepad.obj",
+                        "pixelShader": "./Shaders/Cube_PShader.hlsl",
+                        "vertexShader": "./Shaders/Cube_VShader.hlsl"
                     },
                     "type": "RenderComponent"
                 },
@@ -686,7 +756,9 @@
             "components": [
                 {
                     "data": {
-                        "mesh": "rc_mesh"
+                        "mesh": "./Models/gamepad.obj",
+                        "pixelShader": "./Shaders/Cube_PShader.hlsl",
+                        "vertexShader": "./Shaders/Cube_VShader.hlsl"
                     },
                     "type": "RenderComponent"
                 },
@@ -717,7 +789,9 @@
             "components": [
                 {
                     "data": {
-                        "mesh": "rc_mesh"
+                        "mesh": "./Models/gamepad.obj",
+                        "pixelShader": "./Shaders/Cube_PShader.hlsl",
+                        "vertexShader": "./Shaders/Cube_VShader.hlsl"
                     },
                     "type": "RenderComponent"
                 },
@@ -748,7 +822,9 @@
             "components": [
                 {
                     "data": {
-                        "mesh": "rc_mesh"
+                        "mesh": "./Models/gamepad.obj",
+                        "pixelShader": "./Shaders/Cube_PShader.hlsl",
+                        "vertexShader": "./Shaders/Cube_VShader.hlsl"
                     },
                     "type": "RenderComponent"
                 },
@@ -774,6 +850,39 @@
                 }
             ],
             "type": "SimpleEntity"
+        },
+        {
+            "components": [
+                {
+                    "data": {
+                        "mesh": "./Models/plane.obj",
+                        "pixelShader": "./Shaders/Cube_PShader.hlsl",
+                        "vertexShader": "./Shaders/Cube_VShader.hlsl"
+                    },
+                    "type": "RenderComponent"
+                },
+                {
+                    "data": {
+                        "position": [
+                            4.0,
+                            0.0,
+                            0.0
+                        ],
+                        "rotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "scaleFactor": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ]
+                    },
+                    "type": "TransformComponent"
+                }
+            ],
+            "type": "PlaneEntity"
         }
     ]
 }

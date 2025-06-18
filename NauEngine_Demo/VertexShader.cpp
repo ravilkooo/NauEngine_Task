@@ -41,10 +41,59 @@ VertexShader::VertexShader(ID3D11Device* device, LPCWSTR filePath)
 		nullptr,
 		&pVertexShader
 	);
+
+	UINT numInputElements = 4;
+	D3D11_INPUT_ELEMENT_DESC* IALayoutInputElements =
+		(D3D11_INPUT_ELEMENT_DESC*)malloc(numInputElements * sizeof(D3D11_INPUT_ELEMENT_DESC));
+
+	IALayoutInputElements[0] =
+		D3D11_INPUT_ELEMENT_DESC{
+			"POSITION",
+			0,
+			DXGI_FORMAT_R32G32B32_FLOAT,
+			0,
+			0,
+			D3D11_INPUT_PER_VERTEX_DATA,
+			0 };
+	IALayoutInputElements[1] =
+		D3D11_INPUT_ELEMENT_DESC{
+			"COLOR",
+			0,
+			DXGI_FORMAT_R32G32B32A32_FLOAT,
+			0,
+			D3D11_APPEND_ALIGNED_ELEMENT,
+			D3D11_INPUT_PER_VERTEX_DATA,
+			0 };
+	IALayoutInputElements[2] =
+		D3D11_INPUT_ELEMENT_DESC{
+			"TEXCOORD",
+			0,
+			DXGI_FORMAT::DXGI_FORMAT_R32G32_FLOAT,
+			0,
+			D3D11_APPEND_ALIGNED_ELEMENT,
+			D3D11_INPUT_PER_VERTEX_DATA,
+			0 };
+	IALayoutInputElements[3] =
+		D3D11_INPUT_ELEMENT_DESC{
+			"NORMAL",
+			0,
+			DXGI_FORMAT::DXGI_FORMAT_R32G32B32_FLOAT,
+			0,
+			D3D11_APPEND_ALIGNED_ELEMENT,
+			D3D11_INPUT_PER_VERTEX_DATA,
+			0 };
+
+	device->CreateInputLayout(
+		IALayoutInputElements,
+		numInputElements,
+		pShaderBytecodeBlob->GetBufferPointer(),
+		pShaderBytecodeBlob->GetBufferSize(),
+		&pInputLayout);
 }
 
 void VertexShader::Bind(ID3D11DeviceContext* context)
 {
+	context->IASetInputLayout(pInputLayout.Get());
 	context->VSSetShader(pVertexShader.Get(), nullptr, 0u);
 }
 

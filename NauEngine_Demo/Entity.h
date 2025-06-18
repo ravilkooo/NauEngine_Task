@@ -4,6 +4,7 @@
 #include <memory>
 #include <iostream>
 #include <nlohmann_json/json.hpp>
+#include <d3d11.h>
 #include "Component.h"
 
 using json = nlohmann::json;
@@ -13,7 +14,7 @@ using json = nlohmann::json;
 class Entity
 {
 public:
-	virtual ~Entity() = default;
+	// virtual ~Entity() = default;
 
     template<typename T, typename... Args>
     T& AddComponent(Args&&... args) {
@@ -47,7 +48,7 @@ public:
     virtual std::string getTypeName() const = 0;
 
     virtual void to_json(json& j) = 0;
-    virtual void from_json(const json& j) = 0;
+    virtual void from_json(ID3D11Device* device, const json& j) = 0;
     
 
 protected:

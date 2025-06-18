@@ -120,6 +120,9 @@
     <ClInclude Include="MeshUtils.h">
       <Filter>Header Files\ResourceManager</Filter>
     </ClInclude>
+    <ClInclude Include="PlaneEntity.h">
+      <Filter>Header Files</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Scene.cpp">
@@ -187,6 +190,9 @@
     </ClCompile>
     <ClCompile Include="VertexShader.cpp">
       <Filter>Source Files\ResorceManager\Resources</Filter>
+    </ClCompile>
+    <ClCompile Include="PlaneEntity.cpp">
+      <Filter>Source Files</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

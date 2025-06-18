@@ -1,5 +1,7 @@
 #include "Game.h"
 #include "SimpleEntity.h"
+#include "PlaneEntity.h"
+#include "ResourceManager.h"
 #include <fstream>
 
 Game::Game()
@@ -16,17 +18,39 @@ Game::Game()
 	displayWindow = DisplayWindow(this, applicationName, hInstance, winWidth, winHeight);
 
 	renderSystem = new RenderSystem(&displayWindow);
+	json scene_data;
+	std::ifstream f("scene.json");
+	f >> scene_data;
+	f.close();
+	scene->from_json(renderSystem->GetDevice(), scene_data);
+	renderSystem->SetMainCamera(scene->mainCamera);
 
+	json resources_data;
+	f.open("resources.json");
+	f >> resources_data;
+	f.close();
+	ResourceManager::Instance().from_json(renderSystem->GetDevice(), resources_data);
+
+	/*
 	for (size_t i = 0; i < 25; i++)
 	{
-		scene->AddEntity(new SimpleEntity(renderSystem->GetDevice(), 4 * i * 1));
+		scene->AddEntity(std::make_unique<SimpleEntity>(renderSystem->GetDevice(), 4 * i * 1));
 	}
+	scene->AddEntity(std::make_unique<PlaneEntity>(renderSystem->GetDevice()));
+	scene->mainCamera = renderSystem->GetMainCamera();
+	scene->mainCamera->SetPosition({ 0,0,-10 });
 
 	json data;
 	std::ofstream outfstream("scene.json");
 	scene->to_json(data);
-	//stuff_to_json(data, Json_stuff({ 4,1,4 }));
 	outfstream << std::setw(4) << data << std::endl;
+
+	data.clear();
+	outfstream.open("resources.json");
+	ResourceManager::Instance().to_json(data);
+	outfstream << std::setw(4) << data << std::endl;
+	*/
+
 }
 
 void Game::Run()
@@ -76,6 +100,14 @@ void Game::Tick(float deltaTime) {
 void Game::Render()
 {
 	renderSystem->RenderScene(*scene);
+}
+
+void Game::LoadScene()
+{
+	json data;
+	std::ifstream in_fstream("scene.json");
+	scene->from_json(renderSystem->GetDevice(), data);
+	renderSystem->SetMainCamera(scene->mainCamera);
 }
 
 Game::~Game()

@@ -16,7 +16,10 @@ class TransformComponent :
     public Component
 {
 public:
+    TransformComponent() {};
     TransformComponent(ID3D11Device* device);
+
+    void SetupBuffer(ID3D11Device* device);
 
     // To-do ptr
     TransformCBuffer* transformBuffer;
@@ -60,6 +63,6 @@ public:
     std::string getTypeName() const override;
 
     void to_json(json& j) override;
-    void from_json(const json& j) override;
+    void from_json(ID3D11Device* device, const json& j) override;
 };
 
