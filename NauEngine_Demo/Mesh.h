@@ -51,7 +51,6 @@ public:
 
     UINT GetIndexCount() const { return m_indexCount; }
 
-
     const std::string getTypeName() const override { return "Mesh"; };
 
 private:

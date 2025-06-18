@@ -49,12 +49,12 @@
     <Filter Include="Header Files\ResourceManager\Resources">
       <UniqueIdentifier>{eedd5a5c-f590-4136-a2ff-563a4d73fbd3}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Source Files\CustomObject">
+      <UniqueIdentifier>{3b6e2859-8f25-4094-bd08-4f03a391f57d}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Scene.h">
-      <Filter>Header Files</Filter>
-    </ClInclude>
-    <ClInclude Include="RenderSystem.h">
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Game.h">
@@ -99,9 +99,6 @@
     <ClInclude Include="ConstantBuffer.h">
       <Filter>Header Files\ResourceManager\Resources</Filter>
     </ClInclude>
-    <ClInclude Include="InputLayout.h">
-      <Filter>Header Files\ResourceManager\Resources</Filter>
-    </ClInclude>
     <ClInclude Include="Mesh.h">
       <Filter>Header Files\ResourceManager\Resources</Filter>
     </ClInclude>
@@ -121,14 +118,23 @@
       <Filter>Header Files\ResourceManager</Filter>
     </ClInclude>
     <ClInclude Include="PlaneEntity.h">
+      <Filter>Header Files\CustomObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderSystem.h">
+      <Filter>Header Files\ECS</Filter>
+    </ClInclude>
+    <ClInclude Include="CustomEntity.h">
+      <Filter>Header Files\CustomObjects</Filter>
+    </ClInclude>
+    <ClInclude Include="Texture.h">
+      <Filter>Header Files\ResourceManager\Resources</Filter>
+    </ClInclude>
+    <ClInclude Include="StringHelper.h">
       <Filter>Header Files</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Scene.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
-    <ClCompile Include="RenderSystem.cpp">
       <Filter>Source Files</Filter>
     </ClCompile>
     <ClCompile Include="Game.cpp">
@@ -158,9 +164,6 @@
     <ClCompile Include="InputDevice\InputDevice.cpp">
       <Filter>Source Files\InputDevice</Filter>
     </ClCompile>
-    <ClCompile Include="SimpleEntity.cpp">
-      <Filter>Source Files</Filter>
-    </ClCompile>
     <ClCompile Include="MeshUtils.cpp">
       <Filter>Source Files\ResorceManager</Filter>
     </ClCompile>
@@ -176,9 +179,6 @@
     <ClCompile Include="Mesh.cpp">
       <Filter>Source Files\ResorceManager\Resources</Filter>
     </ClCompile>
-    <ClCompile Include="InputLayout.cpp">
-      <Filter>Source Files\ResorceManager\Resources</Filter>
-    </ClCompile>
     <ClCompile Include="PixelShader.cpp">
       <Filter>Source Files\ResorceManager\Resources</Filter>
     </ClCompile>
@@ -191,8 +191,20 @@
     <ClCompile Include="VertexShader.cpp">
       <Filter>Source Files\ResorceManager\Resources</Filter>
     </ClCompile>
+    <ClCompile Include="RenderSystem.cpp">
+      <Filter>Source Files\ECS</Filter>
+    </ClCompile>
+    <ClCompile Include="CustomEntity.cpp">
+      <Filter>Source Files\CustomObject</Filter>
+    </ClCompile>
     <ClCompile Include="PlaneEntity.cpp">
-      <Filter>Source Files</Filter>
+      <Filter>Source Files\CustomObject</Filter>
+    </ClCompile>
+    <ClCompile Include="SimpleEntity.cpp">
+      <Filter>Source Files\CustomObject</Filter>
+    </ClCompile>
+    <ClCompile Include="Texture.cpp">
+      <Filter>Source Files\ResorceManager\Resources</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -200,6 +212,12 @@
       <Filter>Shader Files</Filter>
     </FxCompile>
     <FxCompile Include="Shaders\Cube_VShader.hlsl">
+      <Filter>Shader Files</Filter>
+    </FxCompile>
+    <FxCompile Include="Shaders\Custom_PShader.hlsl">
+      <Filter>Shader Files</Filter>
+    </FxCompile>
+    <FxCompile Include="Shaders\Custom_VShader.hlsl">
       <Filter>Shader Files</Filter>
     </FxCompile>
   </ItemGroup>

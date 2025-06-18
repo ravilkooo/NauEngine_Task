@@ -1559,6 +1559,65 @@
                 }
             ],
             "type": "PlaneEntity"
+        },
+        {
+            "components": [
+                {
+                    "data": {
+                        "mesh": "./Models/horse.obj",
+                        "pixelShader": "./Shaders/Custom_PShader.hlsl",
+                        "vertexShader": "./Shaders/Custom_VShader.hlsl"
+                    },
+                    "type": "RenderComponent"
+                },
+                {
+                    "data": {
+                        "localOffset": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "localRotation": [
+                            0.0,
+                            0.0,
+                            0.0
+                        ],
+                        "scaleFactor": [
+                            1.0,
+                            1.0,
+                            1.0
+                        ],
+                        "worldMatrix": [
+                            [
+                                1.0,
+                                0.0,
+                                0.0,
+                                0.0
+                            ],
+                            [
+                                0.0,
+                                1.0,
+                                0.0,
+                                0.0
+                            ],
+                            [
+                                0.0,
+                                0.0,
+                                1.0,
+                                0.0
+                            ],
+                            [
+                                0.0,
+                                0.0,
+                                0.0,
+                                1.0
+                            ]
+                        ]
+                    },
+                    "type": "TransformComponent"
+                }
+            ],
+            "type": "CustomEntity"
         }
     ]
 }

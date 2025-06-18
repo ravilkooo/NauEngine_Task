@@ -3,9 +3,11 @@
 
 void RenderComponent::Render(ID3D11DeviceContext* context)
 {
-	// inputLayout->Bind(context);
 	vertexShader->Bind(context);
 	pixelShader->Bind(context);
+	if (texture) {
+		texture->Bind(context);
+	}
 	mesh->Draw(context);
 }
 

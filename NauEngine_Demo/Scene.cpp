@@ -1,6 +1,7 @@
 #include "Scene.h"
 #include "SimpleEntity.h"
 #include "PlaneEntity.h"
+#include "CustomEntity.h"
 
 Scene::Scene()
 {
@@ -49,6 +50,9 @@ void Scene::from_json(ID3D11Device* device, const json& j)
         }
         else if (type == "PlaneEntity") {
             entity = std::make_unique<PlaneEntity>();
+        }
+        else if (type == "CustomEntity") {
+            entity = std::make_unique<CustomEntity>();
         }
         else {
             continue;

@@ -5,7 +5,15 @@
             "type": "Mesh"
         },
         {
+            "key": "./Shaders/Custom_PShader.hlsl",
+            "type": "PixelShader"
+        },
+        {
             "key": "./Shaders/Cube_VShader.hlsl",
+            "type": "ConstantBuffer"
+        },
+        {
+            "key": "./Shaders/Custom_VShader.hlsl",
             "type": "ConstantBuffer"
         },
         {
@@ -15,6 +23,14 @@
         {
             "key": "./Models/plane.obj",
             "type": "Mesh"
+        },
+        {
+            "key": "./Models/horse.obj",
+            "type": "Mesh"
+        },
+        {
+            "key": "./Textures/horse_Diffuse.dds",
+            "type": "Texture"
         }
     ]
 }

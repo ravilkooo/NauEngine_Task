@@ -18,8 +18,6 @@
 class SimpleEntity : public Entity
 {
 public:
-	//TransformComponent& transfromComp;
-	//RenderComponent& renderComp;
 	SimpleEntity() = default;
 	SimpleEntity(ID3D11Device* device, int num);
 	void Tick(float deltaTime) override;

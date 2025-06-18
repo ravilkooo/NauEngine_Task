@@ -15,7 +15,5 @@ public:
     virtual const std::string getTypeName() const = 0;
     const std::string& GetResourceKey() { return resourceKey; }
 
-    // TO-DO:
-    // template method Args... for Binding resource to pipeline
 };
 

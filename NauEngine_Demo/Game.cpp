@@ -1,6 +1,7 @@
 #include "Game.h"
 #include "SimpleEntity.h"
 #include "PlaneEntity.h"
+#include "CustomEntity.h"
 #include "ResourceManager.h"
 #include <fstream>
 #include <iostream>
@@ -44,6 +45,8 @@ Game::Game()
 			scene->AddEntity(std::make_unique<SimpleEntity>(renderSystem->GetDevice(), 4 * i * 1));
 		}
 		scene->AddEntity(std::make_unique<PlaneEntity>(renderSystem->GetDevice()));
+		scene->AddEntity(std::make_unique<CustomEntity>(renderSystem->GetDevice(), "./Models/horse.obj", "./Textures/horse_Diffuse.dds"));
+		
 		scene->mainCamera = renderSystem->GetMainCamera();
 		scene->mainCamera->SetPosition({ 0,0,-10 });
 

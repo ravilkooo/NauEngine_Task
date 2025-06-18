@@ -18,8 +18,6 @@ class PlaneEntity :
     public Entity
 {
 public:
-	//TransformComponent& transfromComp;
-	//RenderComponent& renderComp;
 	PlaneEntity() = default;
 	PlaneEntity(ID3D11Device* device);
 	void Tick(float deltaTime) override;
