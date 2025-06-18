@@ -25,4 +25,10 @@ public:
 	void Tick(float deltaTime) override;
 
 	float accumTime;
+
+	// Serialization
+	std::string getTypeName() const override;
+
+	void to_json(json& j) override;
+	void from_json(const json& j) override;
 };

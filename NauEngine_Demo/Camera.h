@@ -135,6 +135,13 @@ private:
 
     // for FOLLOW camera mode
     float followPitch;
+
+public:
+    // Serialization
+    std::string getTypeName() const override;
+
+    void to_json(json& j) override;
+    void from_json(const json& j) override;
 };
 
 #endif // CAMERA_H

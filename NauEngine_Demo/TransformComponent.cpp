@@ -78,3 +78,21 @@ Matrix TransformComponent::GetFullTransform()
 {
     return GetScaleMatrix() * GetRotationMatrix() * GetTranslationMatrix();
 }
+
+std::string TransformComponent::getTypeName() const
+{
+    return "TransformComponent";
+}
+
+void TransformComponent::to_json(json& j)
+{
+    j = json{
+        {"position", {position.x, position.y, position.z}},
+        {"rotation", {rotation.x, rotation.y, rotation.z}},
+        {"scaleFactor", {scaleFactor.x, scaleFactor.y, scaleFactor.z}}
+    };
+}
+
+void TransformComponent::from_json(const json& j)
+{
+}

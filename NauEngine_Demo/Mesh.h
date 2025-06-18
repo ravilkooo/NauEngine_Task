@@ -8,6 +8,11 @@
 #include <wrl/client.h>
 #include <SimpleMath.h>
 
+#include <assimp/Importer.hpp>
+#include <assimp/scene.h>
+#include <assimp/postprocess.h>
+#include <filesystem>
+
 using namespace DirectX::SimpleMath;
 
 struct Vertex
@@ -17,12 +22,27 @@ struct Vertex
     Vector2 texcoord;
 };
 
+enum VertexAttributesFlags : UINT {
+    POSITION = 0x1,
+    COLOR = 0x2,
+    UV = 0x4,
+    NORMAL = 0x8,
+};
+
 class Mesh : public Resource
 {
 public:
     Mesh(ID3D11Device* device,
-        const std::vector<Vertex>& vertices,
-        const std::vector<uint32_t>& indices);
+        const std::string& path, UINT attrFlags);
+
+    bool LoadModel(std::vector<Vertex>& vertices,
+        std::vector<uint32_t>& indices,
+        const std::string& path,
+        UINT attrFlags = VertexAttributesFlags::POSITION);
+
+    void CreateUnwrappedCubeMesh(
+        std::vector<Vertex>& vertices,
+        std::vector<uint32_t>& indices);
 
     void Draw(ID3D11DeviceContext* context) const;
 

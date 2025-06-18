@@ -3,7 +3,10 @@
 #include <vector>
 #include <memory>
 #include <iostream>
+#include <nlohmann_json/json.hpp>
 #include "Component.h"
+
+using json = nlohmann::json;
 
 // class Component;
 
@@ -39,6 +42,13 @@ public:
     }
 
     virtual void Tick(float deltaTime) = 0;
+
+    // Serialization
+    virtual std::string getTypeName() const = 0;
+
+    virtual void to_json(json& j) = 0;
+    virtual void from_json(const json& j) = 0;
+    
 
 protected:
     std::vector<std::unique_ptr<Component>> components;

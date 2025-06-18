@@ -428,3 +428,16 @@ Camera::FrustumCorners Camera::GetFrustumCorners()
 
     return corners;
 }
+
+std::string Camera::getTypeName() const
+{
+    return "Camera";
+}
+
+void Camera::to_json(json& j)
+{
+}
+
+void Camera::from_json(const json& j)
+{
+}

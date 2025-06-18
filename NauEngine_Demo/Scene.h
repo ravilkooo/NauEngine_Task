@@ -1,8 +1,8 @@
 #pragma once
 
 #include <vector>
-#include "Entity.h"
 #include <nlohmann_json/json.hpp>
+#include "Entity.h"
 
 using json = nlohmann::json;
 
@@ -12,6 +12,7 @@ public:
     Scene();
     ~Scene();
 
+    /*
     class Json_stuff {
     public:
         Json_stuff() {};
@@ -26,17 +27,19 @@ public:
             j.at("z").get_to(this->z);
         }
     };
+    */
 
     // To-do smart ptr?
     void AddEntity(Entity* node);
     void RemoveEntity(Entity* node);
     void Tick(float deltaTime);
-    void Draw();
+    // void Draw();
 
     // To-do smart ptr?
     std::vector<Entity*> entities;
 
     // Serialization
-    
+    void to_json(json& j);
+    void from_json(const json& j);
 };
 

@@ -5,8 +5,9 @@ SimpleEntity::SimpleEntity(ID3D11Device* device, int num) {
 	auto& renderComp = this->AddComponent<RenderComponent>();
 
 	//renderComp.mesh = CreateUnwrappedCubeMesh(device);
-	renderComp.mesh = LoadModel(device, "./Models/gamepad.obj", VertexAttributesFlags::POSITION | VertexAttributesFlags::UV
-		| VertexAttributesFlags::NORMAL);
+	renderComp.mesh = ResourceManager::Instance().Load<Mesh>("./Models/gamepad.obj", device, "./Models/gamepad.obj",
+		VertexAttributesFlags::POSITION | VertexAttributesFlags::UV | VertexAttributesFlags::NORMAL);
+
 	renderComp.vertexShader = ResourceManager::Instance().Load<VertexShader>("SimpleEntity_VShader", device, L"./Shaders/Cube_VShader.hlsl");
 	renderComp.pixelShader = ResourceManager::Instance().Load<PixelShader>("SimpleEntity_PShader", device, L"./Shaders/Cube_PShader.hlsl");
 
@@ -55,4 +56,28 @@ void SimpleEntity::Tick(float deltaTime) {
 
 	transformComp.SetPosition({ 4.0f * transformComp.scaleFactor.x * cos(transformComp.scaleFactor.x * accumTime),
 		4.0f * transformComp.scaleFactor.x * sin(transformComp.scaleFactor.x * accumTime), 3});
+}
+
+std::string SimpleEntity::getTypeName() const
+{
+	return "SimpleEntity";
+}
+
+void SimpleEntity::to_json(json& j)
+{
+	j["type"] = getTypeName();
+	j["components"] = json::array();
+
+	for (const auto& comp : components) {
+		json comp_json;
+		comp_json["type"] = comp->getTypeName();
+		comp->to_json(comp_json["data"]);
+		j["components"].push_back(comp_json);
+	}
+
+}
+
+void SimpleEntity::from_json(const json& j)
+{
+
 }

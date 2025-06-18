@@ -1,5 +1,6 @@
 #include "Game.h"
 #include "SimpleEntity.h"
+#include <fstream>
 
 Game::Game()
 {
@@ -16,10 +17,16 @@ Game::Game()
 
 	renderSystem = new RenderSystem(&displayWindow);
 
-	for (size_t i = 0; i < 100; i++)
+	for (size_t i = 0; i < 25; i++)
 	{
-		scene->AddEntity(new SimpleEntity(renderSystem->GetDevice(), i * 1));
+		scene->AddEntity(new SimpleEntity(renderSystem->GetDevice(), 4 * i * 1));
 	}
+
+	json data;
+	std::ofstream outfstream("scene.json");
+	scene->to_json(data);
+	//stuff_to_json(data, Json_stuff({ 4,1,4 }));
+	outfstream << std::setw(4) << data << std::endl;
 }
 
 void Game::Run()

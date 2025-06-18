@@ -55,5 +55,11 @@ public:
     Matrix GetFullTransform();
 
     Vector3 SwapRotXYZToPitchYallRoll(Vector3 rot) { return { rot.y, rot.x, rot.x }; };
+
+    // Serialization
+    std::string getTypeName() const override;
+
+    void to_json(json& j) override;
+    void from_json(const json& j) override;
 };
 
