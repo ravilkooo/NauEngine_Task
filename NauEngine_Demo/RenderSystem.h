@@ -34,7 +34,6 @@ public:
     // std::vector<RenderPass*> passes;
 
 protected:
-	// TO-DO: Com ptr ?
 	Microsoft::WRL::ComPtr<ID3D11Texture2D> backBuffer;
 	Microsoft::WRL::ComPtr<ID3D11Device> device;
 	Microsoft::WRL::ComPtr<ID3D11DeviceContext> context;
@@ -50,10 +49,10 @@ protected:
 
 	// pass stuff
 	// TO-DO: Com ptr ?
-	ID3D11RenderTargetView* renderTargetView;
 	D3D11_VIEWPORT viewport;
-	ID3D11Texture2D* pDepthStencil;
-	ID3D11DepthStencilView* pDSV;
+	ID3D11RenderTargetView* renderTargetView;
+	Microsoft::WRL::ComPtr<ID3D11Texture2D> pDepthStencil;
+	Microsoft::WRL::ComPtr<ID3D11DepthStencilView> pDSV;
 
 	// TO-DO: Com ptr ?
 	std::shared_ptr<Camera> mainCamera;

@@ -32,6 +32,7 @@
                     "data": {
                         "mesh": "./Models/gamepad.obj",
                         "pixelShader": "./Shaders/Cube_PShader.hlsl",
+                        "texture": "",
                         "vertexShader": "./Shaders/Cube_VShader.hlsl"
                     },
                     "type": "RenderComponent"
@@ -91,6 +92,7 @@
                     "data": {
                         "mesh": "./Models/gamepad.obj",
                         "pixelShader": "./Shaders/Cube_PShader.hlsl",
+                        "texture": "",
                         "vertexShader": "./Shaders/Cube_VShader.hlsl"
                     },
                     "type": "RenderComponent"
@@ -150,6 +152,7 @@
                     "data": {
                         "mesh": "./Models/gamepad.obj",
                         "pixelShader": "./Shaders/Cube_PShader.hlsl",
+                        "texture": "",
                         "vertexShader": "./Shaders/Cube_VShader.hlsl"
                     },
                     "type": "RenderComponent"
@@ -209,6 +212,7 @@
                     "data": {
                         "mesh": "./Models/gamepad.obj",
                         "pixelShader": "./Shaders/Cube_PShader.hlsl",
+                        "texture": "",
                         "vertexShader": "./Shaders/Cube_VShader.hlsl"
                     },
                     "type": "RenderComponent"
@@ -268,6 +272,7 @@
                     "data": {
                         "mesh": "./Models/gamepad.obj",
                         "pixelShader": "./Shaders/Cube_PShader.hlsl",
+                        "texture": "",
                         "vertexShader": "./Shaders/Cube_VShader.hlsl"
                     },
                     "type": "RenderComponent"
@@ -327,6 +332,7 @@
                     "data": {
                         "mesh": "./Models/gamepad.obj",
                         "pixelShader": "./Shaders/Cube_PShader.hlsl",
+                        "texture": "",
                         "vertexShader": "./Shaders/Cube_VShader.hlsl"
                     },
                     "type": "RenderComponent"
@@ -386,6 +392,7 @@
                     "data": {
                         "mesh": "./Models/gamepad.obj",
                         "pixelShader": "./Shaders/Cube_PShader.hlsl",
+                        "texture": "",
                         "vertexShader": "./Shaders/Cube_VShader.hlsl"
                     },
                     "type": "RenderComponent"
@@ -445,6 +452,7 @@
                     "data": {
                         "mesh": "./Models/gamepad.obj",
                         "pixelShader": "./Shaders/Cube_PShader.hlsl",
+                        "texture": "",
                         "vertexShader": "./Shaders/Cube_VShader.hlsl"
                     },
                     "type": "RenderComponent"
@@ -504,6 +512,7 @@
                     "data": {
                         "mesh": "./Models/gamepad.obj",
                         "pixelShader": "./Shaders/Cube_PShader.hlsl",
+                        "texture": "",
                         "vertexShader": "./Shaders/Cube_VShader.hlsl"
                     },
                     "type": "RenderComponent"
@@ -563,6 +572,7 @@
                     "data": {
                         "mesh": "./Models/gamepad.obj",
                         "pixelShader": "./Shaders/Cube_PShader.hlsl",
+                        "texture": "",
                         "vertexShader": "./Shaders/Cube_VShader.hlsl"
                     },
                     "type": "RenderComponent"
@@ -622,6 +632,7 @@
                     "data": {
                         "mesh": "./Models/gamepad.obj",
                         "pixelShader": "./Shaders/Cube_PShader.hlsl",
+                        "texture": "",
                         "vertexShader": "./Shaders/Cube_VShader.hlsl"
                     },
                     "type": "RenderComponent"
@@ -681,6 +692,7 @@
                     "data": {
                         "mesh": "./Models/gamepad.obj",
                         "pixelShader": "./Shaders/Cube_PShader.hlsl",
+                        "texture": "",
                         "vertexShader": "./Shaders/Cube_VShader.hlsl"
                     },
                     "type": "RenderComponent"
@@ -740,6 +752,7 @@
                     "data": {
                         "mesh": "./Models/gamepad.obj",
                         "pixelShader": "./Shaders/Cube_PShader.hlsl",
+                        "texture": "",
                         "vertexShader": "./Shaders/Cube_VShader.hlsl"
                     },
                     "type": "RenderComponent"
@@ -799,6 +812,7 @@
                     "data": {
                         "mesh": "./Models/gamepad.obj",
                         "pixelShader": "./Shaders/Cube_PShader.hlsl",
+                        "texture": "",
                         "vertexShader": "./Shaders/Cube_VShader.hlsl"
                     },
                     "type": "RenderComponent"
@@ -858,6 +872,7 @@
                     "data": {
                         "mesh": "./Models/gamepad.obj",
                         "pixelShader": "./Shaders/Cube_PShader.hlsl",
+                        "texture": "",
                         "vertexShader": "./Shaders/Cube_VShader.hlsl"
                     },
                     "type": "RenderComponent"
@@ -917,6 +932,7 @@
                     "data": {
                         "mesh": "./Models/gamepad.obj",
                         "pixelShader": "./Shaders/Cube_PShader.hlsl",
+                        "texture": "",
                         "vertexShader": "./Shaders/Cube_VShader.hlsl"
                     },
                     "type": "RenderComponent"
@@ -976,6 +992,7 @@
                     "data": {
                         "mesh": "./Models/gamepad.obj",
                         "pixelShader": "./Shaders/Cube_PShader.hlsl",
+                        "texture": "",
                         "vertexShader": "./Shaders/Cube_VShader.hlsl"
                     },
                     "type": "RenderComponent"
@@ -1035,6 +1052,7 @@
                     "data": {
                         "mesh": "./Models/gamepad.obj",
                         "pixelShader": "./Shaders/Cube_PShader.hlsl",
+                        "texture": "",
                         "vertexShader": "./Shaders/Cube_VShader.hlsl"
                     },
                     "type": "RenderComponent"
@@ -1094,6 +1112,7 @@
                     "data": {
                         "mesh": "./Models/gamepad.obj",
                         "pixelShader": "./Shaders/Cube_PShader.hlsl",
+                        "texture": "",
                         "vertexShader": "./Shaders/Cube_VShader.hlsl"
                     },
                     "type": "RenderComponent"
@@ -1153,6 +1172,7 @@
                     "data": {
                         "mesh": "./Models/gamepad.obj",
                         "pixelShader": "./Shaders/Cube_PShader.hlsl",
+                        "texture": "",
                         "vertexShader": "./Shaders/Cube_VShader.hlsl"
                     },
                     "type": "RenderComponent"
@@ -1212,6 +1232,7 @@
                     "data": {
                         "mesh": "./Models/gamepad.obj",
                         "pixelShader": "./Shaders/Cube_PShader.hlsl",
+                        "texture": "",
                         "vertexShader": "./Shaders/Cube_VShader.hlsl"
                     },
                     "type": "RenderComponent"
@@ -1271,6 +1292,7 @@
                     "data": {
                         "mesh": "./Models/gamepad.obj",
                         "pixelShader": "./Shaders/Cube_PShader.hlsl",
+                        "texture": "",
                         "vertexShader": "./Shaders/Cube_VShader.hlsl"
                     },
                     "type": "RenderComponent"
@@ -1330,6 +1352,7 @@
                     "data": {
                         "mesh": "./Models/gamepad.obj",
                         "pixelShader": "./Shaders/Cube_PShader.hlsl",
+                        "texture": "",
                         "vertexShader": "./Shaders/Cube_VShader.hlsl"
                     },
                     "type": "RenderComponent"
@@ -1389,6 +1412,7 @@
                     "data": {
                         "mesh": "./Models/gamepad.obj",
                         "pixelShader": "./Shaders/Cube_PShader.hlsl",
+                        "texture": "",
                         "vertexShader": "./Shaders/Cube_VShader.hlsl"
                     },
                     "type": "RenderComponent"
@@ -1448,6 +1472,7 @@
                     "data": {
                         "mesh": "./Models/gamepad.obj",
                         "pixelShader": "./Shaders/Cube_PShader.hlsl",
+                        "texture": "",
                         "vertexShader": "./Shaders/Cube_VShader.hlsl"
                     },
                     "type": "RenderComponent"
@@ -1507,6 +1532,7 @@
                     "data": {
                         "mesh": "./Models/plane.obj",
                         "pixelShader": "./Shaders/Cube_PShader.hlsl",
+                        "texture": "",
                         "vertexShader": "./Shaders/Cube_VShader.hlsl"
                     },
                     "type": "RenderComponent"
@@ -1566,6 +1592,7 @@
                     "data": {
                         "mesh": "./Models/horse.obj",
                         "pixelShader": "./Shaders/Custom_PShader.hlsl",
+                        "texture": "./Textures/horse_Diffuse.dds",
                         "vertexShader": "./Shaders/Custom_VShader.hlsl"
                     },
                     "type": "RenderComponent"

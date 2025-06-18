@@ -68,13 +68,13 @@ RenderSystem::RenderSystem(DisplayWindow* displayWin)
 	descDepth.BindFlags = D3D11_BIND_DEPTH_STENCIL;
 	descDepth.CPUAccessFlags = 0;
 	descDepth.MiscFlags = 0;
-	device->CreateTexture2D(&descDepth, nullptr, &pDepthStencil);
+	device->CreateTexture2D(&descDepth, nullptr, pDepthStencil.GetAddressOf());
 
 	D3D11_DEPTH_STENCIL_VIEW_DESC descDSV = {};
 	descDSV.Format = DXGI_FORMAT_D32_FLOAT;
 	descDSV.ViewDimension = D3D11_DSV_DIMENSION_TEXTURE2D;
 	descDSV.Texture2D.MipSlice = 0u;
-	device->CreateDepthStencilView(pDepthStencil, &descDSV, &pDSV);
+	device->CreateDepthStencilView(pDepthStencil.Get(), &descDSV, &pDSV);
 
 	viewport = {};
 	viewport.Width = static_cast<float>(screenWidth);
@@ -99,37 +99,19 @@ void RenderSystem::RenderScene(const Scene& scene)
 			auto& render = entity->GetComponent<RenderComponent>();
 			transform.Bind(GetDeviceContext());
 			render.Render(GetDeviceContext());
-
-			
-			/*
-			render.mesh->draw(transform.position,
-				transform.rotation,
-				transform.scale,
-				render.material);
-			*/
 		}
 	}
 	EndFrame();
-
-	// Passes
-	/*
-	for (RenderPass* pass : passes) {
-		context->ClearState();
-		pass->StartFrame();
-		pass->Pass(scene);
-		pass->EndFrame();
-	}
-	*/
 
 	swapChain->Present(1, 0);
 }
 
 void RenderSystem::StartFrame()
 {
-	context->OMSetRenderTargets(1u, &renderTargetView, pDSV);
+	context->OMSetRenderTargets(1u, &renderTargetView, pDSV.Get());
 	float color[] = { 0.1f, 0.1f, 0.1f, 1.0f };
 	context->ClearRenderTargetView(renderTargetView, color);
-	context->ClearDepthStencilView(pDSV, D3D11_CLEAR_DEPTH, 1.0f, 0u);
+	context->ClearDepthStencilView(pDSV.Get(), D3D11_CLEAR_DEPTH, 1.0f, 0u);
 	context->RSSetViewports(1, &viewport);
 
 	// bind camera const buffer
