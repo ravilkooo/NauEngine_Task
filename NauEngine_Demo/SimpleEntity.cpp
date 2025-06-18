@@ -11,16 +11,16 @@ SimpleEntity::SimpleEntity(ID3D11Device* device, int num) {
 	renderComp.pixelShader = ResourceManager::Instance().Load<PixelShader>("./Shaders/Cube_PShader.hlsl", device, L"./Shaders/Cube_PShader.hlsl");
 
 	auto& transformComp = this->AddComponent<TransformComponent>(device);
-	transformComp.SetPosition({ 0, 0, num * 3.0f / 100 });
-	transformComp.SetScale(num * 2.0f / 100);
+	transformComp.SetOffset({ 0, 0, num * 3.0f / 100 });
+	transformComp.SetScaleFactor(num * 2.0f / 100);
 }
 
 void SimpleEntity::Tick(float deltaTime) {
 	accumTime += deltaTime;
 	auto& transformComp = this->GetComponent<TransformComponent>();
-	transformComp.Rotate({ deltaTime * 2, 0, 0 });
+	transformComp.LocalRotate({ deltaTime * 2, 0, 0 });
 
-	transformComp.SetPosition({ 4.0f * transformComp.scaleFactor.x * cos(transformComp.scaleFactor.x * accumTime),
+	transformComp.SetOffset({ 4.0f * transformComp.scaleFactor.x * cos(transformComp.scaleFactor.x * accumTime),
 		4.0f * transformComp.scaleFactor.x * sin(transformComp.scaleFactor.x * accumTime), 3});
 }
 

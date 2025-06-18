@@ -17,12 +17,14 @@ Game::Game()
 
 	displayWindow = DisplayWindow(this, applicationName, hInstance, winWidth, winHeight);
 
+	renderSystem = new RenderSystem(&displayWindow);
+
 	int answer = 0;
 	std::cout << "New scene (0) or Saved scene (1) ? :";
 	std::cin >> answer;
+
 	if (answer)
 	{
-		renderSystem = new RenderSystem(&displayWindow);
 		json scene_data;
 		std::ifstream f("scene.json");
 		f >> scene_data;

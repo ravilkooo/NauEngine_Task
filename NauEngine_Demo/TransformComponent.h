@@ -16,7 +16,7 @@ class TransformComponent :
     public Component
 {
 public:
-    TransformComponent() {};
+    TransformComponent();
     TransformComponent(ID3D11Device* device);
 
     void SetupBuffer(ID3D11Device* device);
@@ -30,31 +30,41 @@ public:
 
     // void Delete() override {};
 
-    Vector3 position = { 0, 0, 0 };
+    Vector3 localOffset = { 0, 0, 0 };
     // Pitch (x-axis), Yaw (y-axis), Roll (z-axis)
-    Vector3 rotation = { 0, 0, 0 };
+    Vector3 localRotation = { 0, 0, 0 };
     Vector3 scaleFactor = { 1, 1, 1 };
+
+    Matrix worldMatrix;
 
     const std::type_info& getType() const override {
         return typeid(TransformComponent);
     }
 
-    void SetPosition(Vector3 newPosition);
+    void SetOffset(Vector3 newPosition);
     // Pitch (x-axis), Yaw (y-axis), Roll (z-axis)
-    void SetRotation(Vector3 newRotation);
-    void SetRotation(Quaternion rotQuaternion);
-    void SetScale(float scaleFactor);
-    void SetScale(Vector3 scaleFactor);
+    void SetLocalRotation(Vector3 newRotation);
+    void SetLocalRotation(Quaternion rotQuaternion);
+    void SetScaleFactor(float scaleFactor);
+    void SetScaleFactor(Vector3 scaleFactor);
 
-    void Translate(Vector3 moveVector);
-    void Rotate(Vector3 pitchYawRoll);
-    void Rotate(Quaternion rotQuaternion);
+    void AddOffset(Vector3 moveVector);
+    void LocalRotate(Vector3 pitchYawRoll);
+    void LocalRotate(Quaternion rotQuaternion);
     void Scale(float newScaleFactor);
     void Scale(Vector3 newScaleFactor);
 
-    Matrix GetTranslationMatrix();
-    Matrix GetRotationMatrix();
+    Matrix GetOffsetMatrix();
+    Matrix GetLocalRotationMatrix();
     Matrix GetScaleMatrix();
+
+    Matrix GetLocalTransform();
+
+    Matrix GetWorldMatrix();
+    void SetWorldMatrix(Matrix newWorldMatrix);
+    void TransformWorldMatrix(Matrix newTransform);
+    
+
     Matrix GetFullTransform();
 
     Vector3 SwapRotXYZToPitchYallRoll(Vector3 rot) { return { rot.y, rot.x, rot.x }; };
@@ -66,3 +76,21 @@ public:
     void from_json(ID3D11Device* device, const json& j) override;
 };
 
+inline void matrix_to_json(json& j, const Matrix& m) {
+    j = json::array();
+    for (int row = 0; row < 4; ++row) {
+        json rowArr = json::array();
+        for (int col = 0; col < 4; ++col) {
+            rowArr.push_back(m(row, col));
+        }
+        j.push_back(rowArr);
+    }
+}
+
+inline void matrix_from_json(const json& j, Matrix& m) {
+    for (int row = 0; row < 4; ++row) {
+        for (int col = 0; col < 4; ++col) {
+            m(row, col) = j.at(row).at(col).get<float>();
+        }
+    }
+}

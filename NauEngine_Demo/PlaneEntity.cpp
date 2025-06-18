@@ -9,15 +9,15 @@ PlaneEntity::PlaneEntity(ID3D11Device* device) {
 	renderComp.pixelShader = ResourceManager::Instance().Load<PixelShader>("./Shaders/Cube_PShader.hlsl", device, L"./Shaders/Cube_PShader.hlsl");
 
 	auto& transformComp = this->AddComponent<TransformComponent>(device);
-	transformComp.SetPosition({ 4, 0, 0 });
+	transformComp.SetOffset({ 4, 0, 0 });
 }
 
 void PlaneEntity::Tick(float deltaTime) {
 	accumTime += deltaTime;
 	auto& transformComp = this->GetComponent<TransformComponent>();
 
-	transformComp.SetRotation({ 0, -accumTime - DirectX::XM_PIDIV2, 0 });
-	transformComp.SetPosition({ 4.0f * cos(accumTime), 0,
+	transformComp.SetLocalRotation({ 0, -accumTime - DirectX::XM_PIDIV2, 0 });
+	transformComp.SetOffset({ 4.0f * cos(accumTime), 0,
 		4.0f * sin(accumTime) });
 }
 
