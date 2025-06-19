@@ -26,6 +26,8 @@ Game::Game()
 
 	if (answer)
 	{
+		// Deserialization
+
 		json scene_data;
 		std::ifstream f("scene.json");
 		f >> scene_data;
@@ -40,6 +42,7 @@ Game::Game()
 		ResourceManager::Instance().from_json(renderSystem->GetDevice(), resources_data);
 	}
 	else {
+		// Serialization
 
 		/**
 		* Добавлять новые объекты ЗДЕСЬ
@@ -67,6 +70,10 @@ Game::Game()
 		ResourceManager::Instance().to_json(data);
 		outfstream << std::setw(4) << data << std::endl;
 	}
+
+
+	InputDevice::getInstance().OnKeyPressed.AddRaw(this, &Game::HandleKeyDown);
+	InputDevice::getInstance().MouseMove.AddRaw(this, &Game::HandleMouseMove);
 
 	timer = GameTimer();
 
@@ -132,4 +139,38 @@ void Game::LoadScene()
 Game::~Game()
 {
 	// TO-DO: Освобождение ресурсов
+}
+
+void Game::HandleKeyDown(Keys key) {
+	if (key == Keys::E)
+	{
+		renderSystem->GetMainCamera()->MoveUp(deltaTime * 10.0f);
+	}
+	if (key == Keys::Q)
+	{
+		renderSystem->GetMainCamera()->MoveDown(deltaTime * 10.0f);
+	}
+	if (key == Keys::W)
+	{
+		renderSystem->GetMainCamera()->MoveForward(deltaTime * 10.0f);
+	}
+	if (key == Keys::S)
+	{
+		renderSystem->GetMainCamera()->MoveBackward(deltaTime * 10.0f);
+	}
+	if (key == Keys::A)
+	{
+		renderSystem->GetMainCamera()->MoveLeft(deltaTime * 10.0f);
+	}
+	if (key == Keys::D)
+	{
+		renderSystem->GetMainCamera()->MoveRight(deltaTime * 10.0f);
+	}
+}
+
+
+void Game::HandleMouseMove(const InputDevice::MouseMoveEventArgs& args)
+{
+	renderSystem->GetMainCamera()->RotateYaw(deltaTime * args.Offset.x * 0.2);
+	renderSystem->GetMainCamera()->RotatePitch(-deltaTime * args.Offset.y * 0.2);
 }

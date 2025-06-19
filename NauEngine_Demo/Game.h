@@ -37,5 +37,10 @@ public:
 
     // Load/save scene
     void LoadScene();
+
+
+
+    void HandleKeyDown(Keys key);
+    void HandleMouseMove(const InputDevice::MouseMoveEventArgs& args);
 };
 
