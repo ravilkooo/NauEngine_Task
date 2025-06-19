@@ -8,7 +8,7 @@ struct PSInput
     float2 texcoord : TEXCOORD0;
 };
 
-float4 main(PSInput input) : SV_TARGET
+float4 main(PSInput input) : SV_Target
 {
     float4 color = tex.Sample(samp, input.texcoord);
     return color;

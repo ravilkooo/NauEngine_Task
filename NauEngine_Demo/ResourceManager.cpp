@@ -28,7 +28,7 @@ void ResourceManager::from_json(ID3D11Device* device, const json& j)
             Load<VertexShader>(key, device, key);
         }
         else if (type == "PixelShader") {
-            Load<VertexShader>(key, device, key);
+            Load<PixelShader>(key, device, key);
         }
         else if (type == "Mesh") {
             Load<Mesh>(key, device, key);

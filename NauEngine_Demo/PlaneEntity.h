@@ -10,7 +10,6 @@
 #include "PixelShader.h"
 
 #include "Mesh.h"
-#include "MeshUtils.h"
 
 #include "TransformCBuffer.h"
 

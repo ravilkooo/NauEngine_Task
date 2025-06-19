@@ -16,7 +16,7 @@ public:
     void Bind(ID3D11DeviceContext* context); // noexcept ?
     ID3DBlob* GetBytecode() const noexcept;
 
-    const std::string getTypeName() const override { return "ConstantBuffer"; };
+    const std::string getTypeName() const override { return "VertexShader"; };
 
 private:
     Microsoft::WRL::ComPtr<ID3DBlob> pShaderBytecodeBlob;

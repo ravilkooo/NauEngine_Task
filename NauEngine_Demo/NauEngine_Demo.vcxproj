@@ -161,7 +161,6 @@
     <ClInclude Include="InputDevice\InputDevice.h" />
     <ClInclude Include="InputDevice\Keys.h" />
     <ClInclude Include="Mesh.h" />
-    <ClInclude Include="MeshUtils.h" />
     <ClInclude Include="PixelShader.h" />
     <ClInclude Include="RenderComponent.h" />
     <ClInclude Include="RenderSystem.h" />
@@ -186,7 +185,6 @@
     <ClCompile Include="InputDevice\InputDevice.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="Mesh.cpp" />
-    <ClCompile Include="MeshUtils.cpp" />
     <ClCompile Include="PixelShader.cpp" />
     <ClCompile Include="PlaneEntity.cpp" />
     <ClCompile Include="RenderComponent.cpp" />

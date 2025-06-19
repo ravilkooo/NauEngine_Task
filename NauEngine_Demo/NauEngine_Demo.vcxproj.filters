@@ -22,9 +22,6 @@
     <Filter Include="Header Files\ECS">
       <UniqueIdentifier>{f0473169-369e-40b7-971e-408a8c01f098}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Header Files\ECS\Component">
-      <UniqueIdentifier>{1b57cb65-6f8f-40b7-93f8-dda7356eec79}</UniqueIdentifier>
-    </Filter>
     <Filter Include="Header Files\CustomObjects">
       <UniqueIdentifier>{7cfd5bb4-d2cf-4a71-bcde-7e661f35a87e}</UniqueIdentifier>
     </Filter>
@@ -52,6 +49,15 @@
     <Filter Include="Source Files\CustomObject">
       <UniqueIdentifier>{3b6e2859-8f25-4094-bd08-4f03a391f57d}</UniqueIdentifier>
     </Filter>
+    <Filter Include="Header Files\ECS\Components">
+      <UniqueIdentifier>{1b57cb65-6f8f-40b7-93f8-dda7356eec79}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\ECS\Systems">
+      <UniqueIdentifier>{c9cb4e44-0500-4fcc-b035-15769ec97f95}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Header Files\ECS\Entities">
+      <UniqueIdentifier>{421d9e76-d52f-47bf-9e58-40fd35ec14a3}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="Scene.h">
@@ -67,13 +73,13 @@
       <Filter>Header Files</Filter>
     </ClInclude>
     <ClInclude Include="Component.h">
-      <Filter>Header Files\ECS\Component</Filter>
+      <Filter>Header Files\ECS\Components</Filter>
     </ClInclude>
     <ClInclude Include="RenderComponent.h">
-      <Filter>Header Files\ECS\Component</Filter>
+      <Filter>Header Files\ECS\Components</Filter>
     </ClInclude>
     <ClInclude Include="TransformComponent.h">
-      <Filter>Header Files\ECS\Component</Filter>
+      <Filter>Header Files\ECS\Components</Filter>
     </ClInclude>
     <ClInclude Include="InputDevice\Delegates.h">
       <Filter>Header Files\InputDevice</Filter>
@@ -84,17 +90,11 @@
     <ClInclude Include="InputDevice\Keys.h">
       <Filter>Header Files\InputDevice</Filter>
     </ClInclude>
-    <ClInclude Include="Entity.h">
-      <Filter>Header Files\ECS</Filter>
-    </ClInclude>
     <ClInclude Include="ResourceManager.h">
       <Filter>Header Files\ResourceManager</Filter>
     </ClInclude>
     <ClInclude Include="SimpleEntity.h">
       <Filter>Header Files\CustomObjects</Filter>
-    </ClInclude>
-    <ClInclude Include="Camera.h">
-      <Filter>Header Files\ECS</Filter>
     </ClInclude>
     <ClInclude Include="ConstantBuffer.h">
       <Filter>Header Files\ResourceManager\Resources</Filter>
@@ -114,14 +114,8 @@
     <ClInclude Include="Resource.h">
       <Filter>Header Files\ResourceManager\Resources</Filter>
     </ClInclude>
-    <ClInclude Include="MeshUtils.h">
-      <Filter>Header Files\ResourceManager</Filter>
-    </ClInclude>
     <ClInclude Include="PlaneEntity.h">
       <Filter>Header Files\CustomObjects</Filter>
-    </ClInclude>
-    <ClInclude Include="RenderSystem.h">
-      <Filter>Header Files\ECS</Filter>
     </ClInclude>
     <ClInclude Include="CustomEntity.h">
       <Filter>Header Files\CustomObjects</Filter>
@@ -131,6 +125,15 @@
     </ClInclude>
     <ClInclude Include="StringHelper.h">
       <Filter>Header Files</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderSystem.h">
+      <Filter>Header Files\ECS\Systems</Filter>
+    </ClInclude>
+    <ClInclude Include="Camera.h">
+      <Filter>Header Files\ECS\Entities</Filter>
+    </ClInclude>
+    <ClInclude Include="Entity.h">
+      <Filter>Header Files\ECS\Entities</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -163,9 +166,6 @@
     </ClCompile>
     <ClCompile Include="InputDevice\InputDevice.cpp">
       <Filter>Source Files\InputDevice</Filter>
-    </ClCompile>
-    <ClCompile Include="MeshUtils.cpp">
-      <Filter>Source Files\ResorceManager</Filter>
     </ClCompile>
     <ClCompile Include="ResourceManager.cpp">
       <Filter>Source Files\ResorceManager</Filter>

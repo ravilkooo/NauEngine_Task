@@ -10,11 +10,11 @@
         },
         {
             "key": "./Shaders/Cube_VShader.hlsl",
-            "type": "ConstantBuffer"
+            "type": "VertexShader"
         },
         {
             "key": "./Shaders/Custom_VShader.hlsl",
-            "type": "ConstantBuffer"
+            "type": "VertexShader"
         },
         {
             "key": "./Shaders/Cube_PShader.hlsl",

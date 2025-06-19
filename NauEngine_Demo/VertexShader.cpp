@@ -3,6 +3,7 @@
 
 VertexShader::VertexShader(ID3D11Device* device, LPCWSTR filePath)
 {
+	std::cout << filePath << "\n";
 	ID3DBlob* errorVertexCode = nullptr;
 	HRESULT hr = D3DCompileFromFile(
 		filePath,

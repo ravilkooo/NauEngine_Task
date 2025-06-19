@@ -28,18 +28,19 @@ Game::Game()
 	{
 		// Deserialization
 
+		json resources_data;
+		std::ifstream f("resources.json");
+		f >> resources_data;
+		f.close();
+		ResourceManager::Instance().from_json(renderSystem->GetDevice(), resources_data);
+
 		json scene_data;
-		std::ifstream f("scene.json");
+		f.open("scene.json");
 		f >> scene_data;
 		f.close();
 		scene->from_json(renderSystem->GetDevice(), scene_data);
 		renderSystem->SetMainCamera(scene->mainCamera);
 
-		json resources_data;
-		f.open("resources.json");
-		f >> resources_data;
-		f.close();
-		ResourceManager::Instance().from_json(renderSystem->GetDevice(), resources_data);
 	}
 	else {
 		// Serialization
