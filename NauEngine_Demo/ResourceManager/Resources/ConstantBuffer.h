@@ -51,7 +51,8 @@ public:
 		}
 	}
 	
-	// ~ConstantBuffer() override = default;
+	void Release() { pConstantBuffer.ReleaseAndGetAddressOf(); };
+	~ConstantBuffer() { Release(); };
 
 	const std::string getTypeName() const override { return "ConstantBuffer"; };
 };

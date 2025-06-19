@@ -6,8 +6,11 @@
 
 #include "ResourceManager/ResourceManager.h"
 
+#include <d3d11.h>
 #include <fstream>
 #include <iostream>
+
+using namespace DirectX::SimpleMath;
 
 Game::Game()
 {
@@ -17,11 +20,11 @@ Game::Game()
 	winWidth = 1280;
 	winHeight = 720;
 
-	scene = new Scene();
+	scene = std::make_unique<Scene>();
 
 	displayWindow = DisplayWindow(this, applicationName, hInstance, winWidth, winHeight);
 
-	renderSystem = new RenderSystem(&displayWindow);
+	renderSystem = std::make_unique<RenderSystem>(&displayWindow);
 
 	int answer = 0;
 	std::cout << "New scene (0) or Saved scene (1) ? :";
@@ -51,11 +54,14 @@ Game::Game()
 		// Floating plane
 		scene->AddEntity(std::make_unique<PlaneEntity>(renderSystem->GetDevice()));
 
-		// Кастомный объект
-		// Cusstom object
+		// Кастомный объект - можно задать позицию и масштаб
+		// Cusstom object - you can set initial position and initial scale
 		scene->AddEntity(std::make_unique<CustomEntity>(renderSystem->GetDevice(),
 			"./Models/horse.obj", "./Textures/horse_Diffuse.dds"));
-		
+		scene->AddEntity(std::make_unique<CustomEntity>(renderSystem->GetDevice(),
+			"./Models/gamepad.obj", "./Textures/gamepad_Diffuse.dds", Vector3(10, 0, 0), Vector3(0.05, 0.05, 0.05 )));
+
+
 		scene->mainCamera = renderSystem->GetMainCamera();
 		scene->mainCamera->SetPosition({ 0,0,-10 });
 	}
@@ -66,6 +72,18 @@ Game::Game()
 
 	timer = GameTimer();
 
+}
+
+Game::~Game()
+{
+	Release();
+}
+
+void Game::Release()
+{
+	scene->Clear();
+	ResourceManager::Instance().Clear();
+	InputDevice::getInstance().OnKeyPressed.RemoveAll();
 }
 
 void Game::Run()
@@ -85,6 +103,9 @@ void Game::Run()
 		// If windows signals to end the application then exit out.
 		if (msg.message == WM_QUIT) {
 			isExitRequested = true;
+			Release();
+			break;
+
 		}
 		timer.Tick();
 		deltaTime = timer.GetDeltaTime();
@@ -144,11 +165,6 @@ void Game::SaveScene()
 	outfstream.open("resources.json");
 	ResourceManager::Instance().to_json(data);
 	outfstream << std::setw(4) << data << std::endl;
-}
-
-Game::~Game()
-{
-	// TO-DO: Освобождение ресурсов
 }
 
 void Game::HandleKeyDown(Keys key) {

@@ -30,10 +30,22 @@ Texture::Texture(ID3D11Device* device, const std::string& filePath)
 	}
 }
 
+Texture::~Texture()
+{
+	Release();
+}
+
 void Texture::Bind(ID3D11DeviceContext* context) noexcept
 {
 	context->PSSetSamplers(0u, 1u, pSampler.GetAddressOf());
 	context->PSSetShaderResources(0u, 1u, pTextureView.GetAddressOf());
+}
+
+void Texture::Release()
+{
+	pSampler.ReleaseAndGetAddressOf();
+	pTexture.ReleaseAndGetAddressOf();
+	pTextureView.ReleaseAndGetAddressOf();
 }
 
 void Texture::Initialize1x1ColorTexture(ID3D11Device* device, const SE_Color& colorData)

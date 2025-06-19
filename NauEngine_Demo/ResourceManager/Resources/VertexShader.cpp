@@ -2,9 +2,13 @@
 
 #include <iostream>
 
+VertexShader::~VertexShader()
+{
+	Release();
+}
+
 VertexShader::VertexShader(ID3D11Device* device, LPCWSTR filePath)
 {
-	std::cout << filePath << "\n";
 	ID3DBlob* errorVertexCode = nullptr;
 	HRESULT hr = D3DCompileFromFile(
 		filePath,
@@ -102,4 +106,10 @@ void VertexShader::Bind(ID3D11DeviceContext* context)
 ID3DBlob* VertexShader::GetBytecode() const noexcept
 {
 	return pShaderBytecodeBlob.Get();
+}
+
+void VertexShader::Release()
+{
+	pShaderBytecodeBlob.ReleaseAndGetAddressOf();
+	pInputLayout.ReleaseAndGetAddressOf();
 }

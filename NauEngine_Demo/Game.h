@@ -2,8 +2,11 @@
 
 #include "GameTimer.h"
 #include "Scene.h"
-#include "ECS/Systems/RenderSystem.h"
 #include "DisplayWindow.h"
+
+#include "ECS/Systems/RenderSystem.h"
+
+#include <memory>
 
 class Game
 {
@@ -11,6 +14,7 @@ public:
     Game();
     ~Game();
 
+    void Release();
     void Run();
 
     void Tick(float deltaTime);
@@ -18,13 +22,10 @@ public:
 
     GameTimer timer;
 
-    // TO-DO: smart pointer ?
-    Scene* scene;
+    std::unique_ptr<Scene> scene;
 
-    // TO-DO: smart pointer ?
-    RenderSystem* renderSystem;
+    std::unique_ptr<RenderSystem> renderSystem;
 
-    // TO-DO: smart pointer ?
     DisplayWindow displayWindow;
 
     HINSTANCE hInstance;

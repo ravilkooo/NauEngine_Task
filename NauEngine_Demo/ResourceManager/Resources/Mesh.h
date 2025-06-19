@@ -38,6 +38,7 @@ public:
     Mesh() {};
     Mesh(ID3D11Device* device,
         const std::string& path);
+    ~Mesh();
 
     bool LoadModel(std::vector<Vertex>& vertices,
         std::vector<uint32_t>& indices,
@@ -49,6 +50,7 @@ public:
         std::vector<uint32_t>& indices);
 
     void Draw(ID3D11DeviceContext* context) const;
+    void Release();
 
     UINT GetIndexCount() const { return m_indexCount; }
 

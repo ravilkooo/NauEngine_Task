@@ -15,7 +15,9 @@ class Texture :
 {
 public:	
 	Texture(ID3D11Device* device, const std::string& filePath);
+	~Texture();
 	void Bind(ID3D11DeviceContext* context) noexcept;
+	void Release();
 private:
 	void Initialize1x1ColorTexture(ID3D11Device* device, const SE_Color& colorData);
 	void InitializeColorTexture(ID3D11Device* device, const SE_Color* colorData, UINT width, UINT height);

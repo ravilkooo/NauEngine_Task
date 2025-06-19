@@ -35,6 +35,8 @@ public:
         resources.erase(id);
     }
 
+    void Clear();
+
     void to_json(json& j);
     void from_json(ID3D11Device* device, const json& j);
 

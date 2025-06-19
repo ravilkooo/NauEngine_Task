@@ -1,6 +1,8 @@
 #include "CustomEntity.h"
 
-CustomEntity::CustomEntity(ID3D11Device* device, std::string meshFilePath, std::string textureFilePath) {
+CustomEntity::CustomEntity(ID3D11Device* device, std::string meshFilePath, std::string textureFilePath,
+	Vector3 initPosition, Vector3 initScale)
+{
 	auto& renderComp = this->AddComponent<RenderComponent>();
 
 	renderComp.mesh = ResourceManager::Instance().Load<Mesh>(meshFilePath, device, meshFilePath);
@@ -9,7 +11,13 @@ CustomEntity::CustomEntity(ID3D11Device* device, std::string meshFilePath, std::
 	renderComp.pixelShader = ResourceManager::Instance().Load<PixelShader>("./Shaders/Custom_PShader.hlsl", device, L"./Shaders/Custom_PShader.hlsl");
 
 	auto& transformComp = this->AddComponent<TransformComponent>(device);
-	transformComp.SetOffset({ 0, 0, 0 });
+	transformComp.SetWorldMatrix(Matrix::CreateTranslation(initPosition));
+	transformComp.SetScaleFactor(initScale);
+}
+
+CustomEntity::CustomEntity(ID3D11Device* device, std::string meshFilePath, std::string textureFilePath) :
+	CustomEntity(device, meshFilePath, textureFilePath, { 0.0f, 0.0f, 0.0f }, {1.0f, 1.0f, 1.0f})
+{
 }
 
 void CustomEntity::Tick(float deltaTime) {

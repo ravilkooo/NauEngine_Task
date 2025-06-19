@@ -12,6 +12,16 @@ TransformCBuffer::TransformCBuffer(ID3D11Device* device, TransformComponent* par
 	}
 }
 
+TransformCBuffer::~TransformCBuffer()
+{
+	Release();
+}
+
+void TransformCBuffer::Release()
+{
+	pVcbuf->Release();
+}
+
 void TransformCBuffer::Bind(ID3D11DeviceContext* context) noexcept
 {
 	const auto wMat = pParent->GetFullTransform();

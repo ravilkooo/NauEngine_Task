@@ -2,6 +2,11 @@
 
 #include <iostream>
 
+PixelShader::~PixelShader()
+{
+	Release();
+}
+
 PixelShader::PixelShader(ID3D11Device* device, LPCWSTR filePath)
 {
 	Microsoft::WRL::ComPtr<ID3DBlob> pShaderBytecodeBlob;
@@ -48,4 +53,9 @@ PixelShader::PixelShader(ID3D11Device* device, LPCWSTR filePath)
 void PixelShader::Bind(ID3D11DeviceContext* context)
 {
 	context->PSSetShader(pPixelShader.Get(), nullptr, 0u);
+}
+
+void PixelShader::Release()
+{
+	pPixelShader.ReleaseAndGetAddressOf();
 }

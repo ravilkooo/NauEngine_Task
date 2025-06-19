@@ -27,6 +27,12 @@ void Scene::Tick(float deltaTime)
     }
 }
 
+void Scene::Clear()
+{
+    entities.clear();
+    mainCamera.reset();
+}
+
 void Scene::to_json(json& j)
 {
     json j_entities = json::array();
@@ -43,7 +49,7 @@ void Scene::to_json(json& j)
 
 void Scene::from_json(ID3D11Device* device, const json& j)
 {
-    this->entities.clear();
+    Clear();
 
     for (const auto& j_e : j["entities"]) {
         std::string type = j_e.at("type").get<std::string>();

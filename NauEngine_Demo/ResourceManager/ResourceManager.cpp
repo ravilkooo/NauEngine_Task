@@ -7,6 +7,11 @@
 
 #include <fstream>
 
+
+void ResourceManager::Clear() {
+    resources.clear();
+}
+
 void ResourceManager::to_json(json& j)
 {
     for (const auto& [key, resource] : resources) {
@@ -20,6 +25,7 @@ void ResourceManager::to_json(json& j)
 
 void ResourceManager::from_json(ID3D11Device* device, const json& j)
 {
+    Clear();
     for (const auto& resJson : j["resources"]) {
         std::string type = resJson["type"];
         std::string key = resJson["key"];

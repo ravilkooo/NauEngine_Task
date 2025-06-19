@@ -13,8 +13,10 @@ public:
     VertexShader() {};
     VertexShader(ID3D11Device* device, std::string filePath) : VertexShader(device, std::wstring(filePath.begin(), filePath.end()).c_str()) {};
     VertexShader(ID3D11Device* device, LPCWSTR filePath);
+    ~VertexShader();
     void Bind(ID3D11DeviceContext* context); // noexcept ?
     ID3DBlob* GetBytecode() const noexcept;
+    void Release();
 
     const std::string getTypeName() const override { return "VertexShader"; };
 

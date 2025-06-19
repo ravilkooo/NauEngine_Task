@@ -18,7 +18,8 @@ public:
     void RemoveEntity(std::unique_ptr<Entity> entity);
     void Tick(float deltaTime);
     // void Draw();
-
+    
+    void Clear();
     std::vector <std::unique_ptr<Entity>> entities;
 
     std::shared_ptr<Camera> mainCamera;

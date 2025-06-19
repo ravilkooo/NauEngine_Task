@@ -61,6 +61,11 @@ Mesh::Mesh(ID3D11Device* device, const std::string& path)
 
 }
 
+Mesh::~Mesh()
+{
+    Release();
+}
+
 void Mesh::CreateUnwrappedCubeMesh(std::vector<Vertex>& vertices, std::vector<uint32_t>& indices)
 {
     // Развёртка "крестом" (UV-карта 3x4 квадрата, каждая грань в своём прямоугольнике)
@@ -229,4 +234,13 @@ void Mesh::Draw(ID3D11DeviceContext* context) const
 
 
     context->DrawIndexed(m_indexCount, 0, 0);
+}
+
+void Mesh::Release()
+{
+    m_vertexBuffer.ReleaseAndGetAddressOf();
+    m_indexBuffer.ReleaseAndGetAddressOf();
+    m_rasterizer.ReleaseAndGetAddressOf();
+    m_depthState.ReleaseAndGetAddressOf();
+    m_indexCount = 0;
 }

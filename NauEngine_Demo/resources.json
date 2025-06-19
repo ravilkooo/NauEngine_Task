@@ -37,7 +37,11 @@
             "type": "Texture"
         },
         {
-            "key": "",
+            "key": "./Models/gamepad.obj",
+            "type": "Mesh"
+        },
+        {
+            "key": "./Textures/gamepad_Diffuse.dds",
             "type": "Texture"
         }
     ]
