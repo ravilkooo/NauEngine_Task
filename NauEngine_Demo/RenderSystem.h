@@ -48,12 +48,10 @@ protected:
 	UINT screenHeight = 720;
 
 	// pass stuff
-	// TO-DO: Com ptr ?
 	D3D11_VIEWPORT viewport;
 	ID3D11RenderTargetView* renderTargetView;
 	Microsoft::WRL::ComPtr<ID3D11Texture2D> pDepthStencil;
 	Microsoft::WRL::ComPtr<ID3D11DepthStencilView> pDSV;
 
-	// TO-DO: Com ptr ?
 	std::shared_ptr<Camera> mainCamera;
 };

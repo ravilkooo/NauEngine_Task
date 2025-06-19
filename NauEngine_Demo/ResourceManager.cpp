@@ -4,6 +4,7 @@
 #include "VertexShader.h"
 #include "PixelShader.h"
 #include "Mesh.h"
+#include "Texture.h"
 
 void ResourceManager::to_json(json& j)
 {
@@ -31,6 +32,9 @@ void ResourceManager::from_json(ID3D11Device* device, const json& j)
         }
         else if (type == "Mesh") {
             Load<Mesh>(key, device, key);
+        }
+        else if (type == "Texture") {
+            Load<Texture>(key, device, key);
         }
         else {
             continue;

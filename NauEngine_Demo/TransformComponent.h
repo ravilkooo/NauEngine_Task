@@ -26,7 +26,7 @@ public:
 
     void Bind(ID3D11DeviceContext* context);
 
-    ~TransformComponent() = default; // защищенный деструктор ? TO-DO: what is it ?
+    ~TransformComponent() = default;
 
     // void Delete() override {};
 

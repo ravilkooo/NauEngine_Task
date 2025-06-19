@@ -4,8 +4,11 @@
 Texture::Texture(ID3D11Device* device, const std::string& filePath)
 	: filePath(filePath)
 {
-	D3D11_SAMPLER_DESC samplerDesc = CD3D11_SAMPLER_DESC();
-	device->CreateSamplerState(&samplerDesc, &pSampler);
+	D3D11_SAMPLER_DESC samplerDesc = CD3D11_SAMPLER_DESC(CD3D11_DEFAULT{});
+	auto hr = device->CreateSamplerState(&samplerDesc, &pSampler);
+	if (FAILED(hr)) {
+		std::cout << "FAILED Sample create\n";
+	}
 
 	if (StringHelper::GetFileExtension(filePath) == "dds")
 	{

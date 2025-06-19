@@ -1,11 +1,15 @@
 # NauEngine_Task
 
+## Оглавление
+1. [Прогресс](#прогресс)
+2. [Архитектурные решения и обоснование выбора](#архитектурные-решения-и-обоснование-выбора)
+3. [Документация](#документация)
+
+## Прогресс
+
 * **Задание 1** - Работает
     TO-DO:
         проверить везде ли правильные типы указателей;
-        объекты с кастомным мешом
-        текстуры
-
 
 * **Задание 2** - Сделано
 
@@ -54,3 +58,75 @@
 - В сериализуемых объектах сохраняются только ключи ресурсов, а не сами объекты, что позволяет избежать дублирования и упростить восстановление состояния через ResourceManager.
 - Для поддержки полиморфизма (разные наследники Entity) в сериализуемых данных сохраняется тип каждого объекта, что позволяет корректно создавать нужные экземпляры при загрузке сцены.
 - При десериализации сначала восстанавливаются все ресурсы в ResourceManager, затем восстанавливаются все объекты сцены с их компонентами, а также их связь с восстановленными ранее ресурсами.
+
+## Документация
+
+### 1. Настройка проекта
+
+- В **Project Settings** проекта *NauEngine_Demo* должны быть выставлены следующие параметры (они стоят по умолчания):
+
+  - General -> C++ Language Standart
+  ![projectProperties_1](README_files/projectProperties_1.png)
+
+  - General -> VC++ Directories
+  ![projectProperties_2](README_files/projectProperties_2.png)
+
+  - C/C++ -> General -> Additional Include Directories
+  ![projectProperties_3](README_files/projectProperties_3.png)
+
+  - Linker -> General -> Additional Library Directories
+  ![projectProperties_4](README_files/projectProperties_4.png)
+
+  - Linker -> Input -> Additional Dependences
+  ![projectProperties_5](README_files/projectProperties_5.png)
+
+- В References проекта *NauEngine_Demo* должен быть указан проект *DirectXTK-main* со следующими параметрами:
+
+  ![projectReferences](README_files/projectReferences.png)
+
+### 2. Ресурсы
+
+- **Расположение ресурсов**
+  - Ресурсы проекта располагаются в следующих директориях:
+
+```
+NauEngine_Demo/
+│
+├── NauEngine_Demo/
+│   ├── Models
+│   ├── Shaders
+│   ├── Textures
+│   └── ...
+└── ...
+```
+
+- **Формат ресурсов**
+  - Мэши - *.obj*
+  - Шейдеры - *.hlsl*, ShaderModel 5.0, точка входа - *main*
+  - Текстуры - *.dds*
+
+### 3. Сериализация
+
+- Сериализация происходит в файлы **resources.json** (ресурсы сцены) и **scene.json** (сущности, их компоненты, ключи ресурсов)
+
+```
+NauEngine_Demo/
+│
+├── NauEngine_Demo/
+│   ├── resources.json
+│   ├── scene.json
+│   └── ...
+└── ...
+```
+
+### 4. Добавление объектов на сцену
+
+- Осущетсвляется в конструкторе класса **Game**:
+
+```cpp
+scene->AddEntity(std::make_unique<CustomEntity> (
+  renderSystem->GetDevice(),
+  "./Models/horse.obj", // Мэш объекта
+  "./Textures/horse_Diffuse.dds" // Текстура объекта
+  ));
+```

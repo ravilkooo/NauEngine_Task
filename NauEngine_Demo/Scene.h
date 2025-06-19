@@ -13,7 +13,6 @@ public:
     Scene();
     ~Scene() = default;
 
-    // To-do smart ptr?
     void AddEntity(std::unique_ptr<Entity> entity);
     void RemoveEntity(std::unique_ptr<Entity> entity);
     void Tick(float deltaTime);

@@ -40,12 +40,19 @@ Game::Game()
 		ResourceManager::Instance().from_json(renderSystem->GetDevice(), resources_data);
 	}
 	else {
+
+		/**
+		* Добавлять новые объекты ЗДЕСЬ
+		* Add new Entities HERE
+		**/
+
 		for (size_t i = 0; i < 25; i++)
 		{
 			scene->AddEntity(std::make_unique<SimpleEntity>(renderSystem->GetDevice(), 4 * i * 1));
 		}
 		scene->AddEntity(std::make_unique<PlaneEntity>(renderSystem->GetDevice()));
-		scene->AddEntity(std::make_unique<CustomEntity>(renderSystem->GetDevice(), "./Models/horse.obj", "./Textures/horse_Diffuse.dds"));
+		scene->AddEntity(std::make_unique<CustomEntity>(renderSystem->GetDevice(),
+			"./Models/horse.obj", "./Textures/horse_Diffuse.dds"));
 		
 		scene->mainCamera = renderSystem->GetMainCamera();
 		scene->mainCamera->SetPosition({ 0,0,-10 });

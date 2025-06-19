@@ -18,10 +18,10 @@ public:
 
     GameTimer timer;
 
-    // TO-DO: smart pointer
+    // TO-DO: smart pointer ?
     Scene* scene;
 
-    // TO-DO: smart pointer
+    // TO-DO: smart pointer ?
     RenderSystem* renderSystem;
 
     // TO-DO: smart pointer ?
