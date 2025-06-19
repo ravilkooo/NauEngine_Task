@@ -21,6 +21,84 @@
 
 ### 1. Общая архитектура
 
+```
+NauEngine_Demo/
+|
+├── resources.json
+├── scene.json
+│
+├── Models/
+│   └── ...
+├── Textures/
+│   └── ...
+├── Shaders/
+│   └── ...
+│   
+├── ECS/
+│   ├── Components/
+│   │   ├── Component.cpp
+│   │   ├── Component.h
+│   │   ├── RenderComponent.cpp
+│   │   ├── RenderComponent.h
+│   │   ├── TransformComponent.cpp
+│   │   └── TransformComponent.h
+│   ├── Entities/
+│   │   ├── Camera.cpp
+│   │   ├── Camera.h
+│   │   ├── CustomEntity.cpp
+│   │   ├── CustomEntity.h
+│   │   ├── Entity.cpp
+│   │   ├── Entity.h
+│   │   ├── PlaneEntity.cpp
+│   │   ├── PlaneEntity.h
+│   │   ├── SimpleEntity.cpp
+│   │   └── SimpleEntity.h
+│   └── Systems/
+│       ├── RenderSystem.cpp
+│       └── RenderSystem.h
+│   
+├── ResourceManager/
+│   ├── ResourceManager.cpp
+│   ├── ResourceManager.h
+│   └── Resources/
+│       ├── ConstantBuffer.h
+│       ├── Mesh.cpp
+│       ├── Mesh.h
+│       ├── PixelShader.cpp
+│       ├── PixelShader.h
+│       ├── Resource.cpp
+│       ├── Resource.h
+│       ├── Texture.cpp
+│       ├── Texture.h
+│       ├── TransformCBuffer.cpp
+│       ├── TransformCBuffer.h
+│       ├── VertexShader.cpp
+│       └── VertexShader.h
+│   
+├── InputDevice/
+│   ├── Delegates.cpp
+│   ├── Delegates.h
+│   ├── InputDevice.cpp
+│   ├── InputDevice.h
+│   └── Keys.h
+│   
+├── DisplayWindow.cpp
+├── DisplayWindow.h
+│  
+├── Game.cpp
+├── Game.h
+│  
+├── GameTimer.cpp
+├── GameTimer.h
+│  
+├── main.cpp
+│  
+├── Scene.cpp
+├── Scene.h
+│  
+└── StringHelper.h
+```
+
 - **Паттерн Entity-Component-System (ECS):**
   - Сущность (Entity) - базовый классы без данных, от которого наследуются, например, игровые объекты
   - Компоненты (Component) - отдельные классы, хранящие специфичные данные (например, TransformComponent, RenderComponent) и логику соответсвующую этим данным.
