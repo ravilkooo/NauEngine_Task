@@ -1,10 +1,11 @@
 #include "ResourceManager.h"
-#include <fstream>
 
-#include "VertexShader.h"
-#include "PixelShader.h"
-#include "Mesh.h"
-#include "Texture.h"
+#include "ResourceManager/Resources/Mesh.h"
+#include "ResourceManager/Resources/VertexShader.h"
+#include "ResourceManager/Resources/PixelShader.h"
+#include "ResourceManager/Resources/Texture.h"
+
+#include <fstream>
 
 void ResourceManager::to_json(json& j)
 {

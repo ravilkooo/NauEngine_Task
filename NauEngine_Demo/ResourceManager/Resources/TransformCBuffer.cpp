@@ -1,6 +1,7 @@
 #include "TransformCBuffer.h"
+#include "ECS/Components/TransformComponent.h"
+
 #include <iostream>
-#include "TransformComponent.h"
 
 TransformCBuffer::TransformCBuffer(ID3D11Device* device, TransformComponent* parent, UINT slot)
 	: pParent(parent)

@@ -1,8 +1,11 @@
 #include "Game.h"
-#include "SimpleEntity.h"
-#include "PlaneEntity.h"
-#include "CustomEntity.h"
-#include "ResourceManager.h"
+
+#include "ECS/Entities/SimpleEntity.h"
+#include "ECS/Entities/PlaneEntity.h"
+#include "ECS/Entities/CustomEntity.h"
+
+#include "ResourceManager/ResourceManager.h"
+
 #include <fstream>
 #include <iostream>
 

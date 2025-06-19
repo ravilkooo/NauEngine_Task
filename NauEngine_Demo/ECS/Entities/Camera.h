@@ -5,8 +5,9 @@
 #include <DirectXMath.h>
 #include <SimpleMath.h>
 
-#include "ConstantBuffer.h"
 #include "Entity.h"
+
+#include "ResourceManager/Resources/ConstantBuffer.h"
 
 using namespace DirectX;
 using namespace DirectX::SimpleMath;

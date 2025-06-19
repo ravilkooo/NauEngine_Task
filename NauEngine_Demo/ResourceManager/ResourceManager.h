@@ -1,6 +1,7 @@
 #pragma once
 
-#include "Resource.h"
+#include "Resources/Resource.h"
+
 #include <assimp/Importer.hpp>
 #include <assimp/scene.h>
 #include <assimp/postprocess.h>

@@ -1,6 +1,7 @@
 #pragma once
 
 #include "Resource.h"
+
 #include <memory>
 #include <vector>
 #include <stdexcept>

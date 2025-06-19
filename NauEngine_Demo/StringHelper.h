@@ -37,7 +37,7 @@ public:
 			return filepath.substr(0, off1);
 		}
 
-		return filepath.substr(0, max(off1, off2));
+		return filepath.substr(0, off1 > off2 ? off1 : off2);
 	}
 
 	static std::string GetFileNameWithoutExtension(const std::string& filepath)
@@ -47,7 +47,7 @@ public:
 		size_t slashOff2 = filepath.find_last_of('/');
 		size_t slashOff = (slashOff1 == std::string::npos) ?
 			slashOff2 :
-			((slashOff2 == std::string::npos) ? slashOff1 : max(slashOff1, slashOff2));
+			((slashOff2 == std::string::npos) ? slashOff1 : (slashOff1 > slashOff2 ? slashOff1 : slashOff2));
 
 		std::string filenameWithExtension;
 		if (slashOff == std::string::npos)

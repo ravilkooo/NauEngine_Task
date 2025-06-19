@@ -1,4 +1,5 @@
 #include "VertexShader.h"
+
 #include <iostream>
 
 VertexShader::VertexShader(ID3D11Device* device, LPCWSTR filePath)

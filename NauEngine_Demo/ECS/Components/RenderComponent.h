@@ -3,10 +3,11 @@
 #include <d3d11.h>
 
 #include "Component.h"
-#include "Mesh.h"
-#include "VertexShader.h"
-#include "PixelShader.h"
-#include "Texture.h"
+
+#include "ResourceManager/Resources/Mesh.h"
+#include "ResourceManager/Resources/VertexShader.h"
+#include "ResourceManager/Resources/PixelShader.h"
+#include "ResourceManager/Resources/Texture.h"
 
 class RenderComponent :
     public Component

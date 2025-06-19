@@ -1,7 +1,7 @@
 #include "RenderSystem.h"
 
-#include "RenderComponent.h"
-#include "TransformComponent.h"
+#include "ECS/Components/RenderComponent.h"
+#include "ECS/Components/TransformComponent.h"
 
 RenderSystem::RenderSystem(DisplayWindow* displayWin)
 {

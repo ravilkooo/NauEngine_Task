@@ -5,7 +5,8 @@
 #include <iostream>
 #include <nlohmann_json/json.hpp>
 #include <d3d11.h>
-#include "Component.h"
+
+#include "ECS/Components/Component.h"
 
 using json = nlohmann::json;
 

@@ -1,5 +1,5 @@
 #include "RenderComponent.h"
-#include "ResourceManager.h"
+#include "ResourceManager/ResourceManager.h"
 
 void RenderComponent::Render(ID3D11DeviceContext* context)
 {

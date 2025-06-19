@@ -1,17 +1,15 @@
 #pragma once
 #include "Entity.h"
 
-#include "ResourceManager.h"
+#include "ECS/Components/RenderComponent.h"
+#include "ECS/Components/TransformComponent.h"
 
-#include "RenderComponent.h"
-#include "TransformComponent.h"
+#include "ResourceManager/ResourceManager.h"
 
-#include "VertexShader.h"
-#include "PixelShader.h"
-
-#include "Mesh.h"
-
-#include "TransformCBuffer.h"
+#include "ResourceManager/Resources/VertexShader.h"
+#include "ResourceManager/Resources/PixelShader.h"
+#include "ResourceManager/Resources/Mesh.h"
+#include "ResourceManager/Resources/TransformCBuffer.h"
 
 class PlaneEntity :
     public Entity

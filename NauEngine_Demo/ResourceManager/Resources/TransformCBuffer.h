@@ -1,7 +1,8 @@
 #pragma once
-#include <directxmath.h>
-#include "ConstantBuffer.h"
 #include "Resource.h"
+#include "ConstantBuffer.h"
+
+#include <directxmath.h>
 
 using namespace DirectX;
 using namespace DirectX::SimpleMath;

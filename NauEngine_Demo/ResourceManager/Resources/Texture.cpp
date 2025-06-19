@@ -1,4 +1,5 @@
 #include "Texture.h"
+
 #include <iostream>
 
 Texture::Texture(ID3D11Device* device, const std::string& filePath)
@@ -7,7 +8,7 @@ Texture::Texture(ID3D11Device* device, const std::string& filePath)
 	D3D11_SAMPLER_DESC samplerDesc = CD3D11_SAMPLER_DESC(CD3D11_DEFAULT{});
 	auto hr = device->CreateSamplerState(&samplerDesc, &pSampler);
 	if (FAILED(hr)) {
-		std::cout << "FAILED Sample create\n";
+		// std::cout << "FAILED Sample create\n";
 	}
 
 	if (StringHelper::GetFileExtension(filePath) == "dds")
@@ -23,7 +24,7 @@ Texture::Texture(ID3D11Device* device, const std::string& filePath)
 	}
 	else
 	{
-		std::cout << "Wrong texture file extension: " << StringHelper::GetFileExtension(filePath) << "\n";
+		// std::cout << "Wrong texture file extension: " << StringHelper::GetFileExtension(filePath) << "\n";
 		this->Initialize1x1ColorTexture(device, SE_Colors::UnloadedTextureColor);
 
 	}

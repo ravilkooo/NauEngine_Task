@@ -1,12 +1,13 @@
 #pragma once
-#include "Component.h"
 
 #include <wrl.h>
 #include <d3d11.h>
 #include <directxmath.h>
 #include <SimpleMath.h>
 
-#include "TransformCBuffer.h"
+#include "Component.h"
+
+#include "ResourceManager/Resources/TransformCBuffer.h"
 
 using namespace DirectX;
 using namespace DirectX::SimpleMath;

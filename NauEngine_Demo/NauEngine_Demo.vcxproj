@@ -71,10 +71,10 @@
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
-    <IncludePath>$(SolutionDir)Include;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)Include;$(IncludePath);$(ProjectDir)</IncludePath>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|x64'">
-    <IncludePath>$(SolutionDir)Include;$(IncludePath)</IncludePath>
+    <IncludePath>$(SolutionDir)Include;$(IncludePath);$(ProjectDir)</IncludePath>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -110,7 +110,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)DirectXTK-main\Inc;$(SolutionDir)Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(SolutionDir)DirectXTK-main\Inc;$(SolutionDir)Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -131,7 +131,7 @@
       <SDLCheck>true</SDLCheck>
       <PreprocessorDefinitions>NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <ConformanceMode>true</ConformanceMode>
-      <AdditionalIncludeDirectories>$(SolutionDir)DirectXTK-main\Inc;$(SolutionDir)Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
+      <AdditionalIncludeDirectories>$(ProjectDir);$(SolutionDir)DirectXTK-main\Inc;$(SolutionDir)Include;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
       <LanguageStandard>stdcpp17</LanguageStandard>
     </ClCompile>
     <Link>
@@ -147,56 +147,56 @@
     </FxCompile>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Camera.h" />
-    <ClInclude Include="Component.h" />
-    <ClInclude Include="ConstantBuffer.h" />
-    <ClInclude Include="CustomEntity.h" />
     <ClInclude Include="DisplayWindow.h" />
-    <ClInclude Include="Entity.h" />
+    <ClInclude Include="ECS\Components\Component.h" />
+    <ClInclude Include="ECS\Components\RenderComponent.h" />
+    <ClInclude Include="ECS\Components\TransformComponent.h" />
+    <ClInclude Include="ECS\Entities\Camera.h" />
+    <ClInclude Include="ECS\Entities\CustomEntity.h" />
+    <ClInclude Include="ECS\Entities\Entity.h" />
+    <ClInclude Include="ECS\Entities\PlaneEntity.h" />
+    <ClInclude Include="ECS\Entities\SimpleEntity.h" />
+    <ClInclude Include="ECS\Systems\RenderSystem.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameTimer.h" />
-    <ClInclude Include="PlaneEntity.h" />
-    <ClInclude Include="SimpleEntity.h" />
+    <ClInclude Include="ResourceManager\ResourceManager.h" />
+    <ClInclude Include="ResourceManager\Resources\ConstantBuffer.h" />
+    <ClInclude Include="ResourceManager\Resources\Mesh.h" />
+    <ClInclude Include="ResourceManager\Resources\PixelShader.h" />
+    <ClInclude Include="ResourceManager\Resources\Resource.h" />
+    <ClInclude Include="ResourceManager\Resources\Texture.h" />
+    <ClInclude Include="ResourceManager\Resources\TransformCBuffer.h" />
+    <ClInclude Include="ResourceManager\Resources\VertexShader.h" />
     <ClInclude Include="InputDevice\Delegates.h" />
     <ClInclude Include="InputDevice\InputDevice.h" />
     <ClInclude Include="InputDevice\Keys.h" />
-    <ClInclude Include="Mesh.h" />
-    <ClInclude Include="PixelShader.h" />
-    <ClInclude Include="RenderComponent.h" />
-    <ClInclude Include="RenderSystem.h" />
-    <ClInclude Include="Resource.h" />
-    <ClInclude Include="ResourceManager.h" />
     <ClInclude Include="Scene.h" />
     <ClInclude Include="StringHelper.h" />
-    <ClInclude Include="Texture.h" />
-    <ClInclude Include="TransformCBuffer.h" />
-    <ClInclude Include="TransformComponent.h" />
-    <ClInclude Include="VertexShader.h" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Camera.cpp" />
-    <ClCompile Include="Component.cpp" />
-    <ClCompile Include="CustomEntity.cpp" />
     <ClCompile Include="DisplayWindow.cpp" />
-    <ClCompile Include="Entity.cpp" />
+    <ClCompile Include="ECS\Components\Component.cpp" />
+    <ClCompile Include="ECS\Components\RenderComponent.cpp" />
+    <ClCompile Include="ECS\Components\TransformComponent.cpp" />
+    <ClCompile Include="ECS\Entities\Camera.cpp" />
+    <ClCompile Include="ECS\Entities\CustomEntity.cpp" />
+    <ClCompile Include="ECS\Entities\Entity.cpp" />
+    <ClCompile Include="ECS\Entities\PlaneEntity.cpp" />
+    <ClCompile Include="ECS\Entities\SimpleEntity.cpp" />
+    <ClCompile Include="ECS\Systems\RenderSystem.cpp" />
     <ClCompile Include="Game.cpp" />
     <ClCompile Include="GameTimer.cpp" />
     <ClCompile Include="InputDevice\Delegates.cpp" />
     <ClCompile Include="InputDevice\InputDevice.cpp" />
     <ClCompile Include="main.cpp" />
-    <ClCompile Include="Mesh.cpp" />
-    <ClCompile Include="PixelShader.cpp" />
-    <ClCompile Include="PlaneEntity.cpp" />
-    <ClCompile Include="RenderComponent.cpp" />
-    <ClCompile Include="RenderSystem.cpp" />
-    <ClCompile Include="Resource.cpp" />
-    <ClCompile Include="ResourceManager.cpp" />
+    <ClCompile Include="ResourceManager\ResourceManager.cpp" />
+    <ClCompile Include="ResourceManager\Resources\Mesh.cpp" />
+    <ClCompile Include="ResourceManager\Resources\PixelShader.cpp" />
+    <ClCompile Include="ResourceManager\Resources\Resource.cpp" />
+    <ClCompile Include="ResourceManager\Resources\Texture.cpp" />
+    <ClCompile Include="ResourceManager\Resources\TransformCBuffer.cpp" />
+    <ClCompile Include="ResourceManager\Resources\VertexShader.cpp" />
     <ClCompile Include="Scene.cpp" />
-    <ClCompile Include="SimpleEntity.cpp" />
-    <ClCompile Include="Texture.cpp" />
-    <ClCompile Include="TransformCBuffer.cpp" />
-    <ClCompile Include="TransformComponent.cpp" />
-    <ClCompile Include="VertexShader.cpp" />
   </ItemGroup>
   <ItemGroup>
     <FxCompile Include="Shaders\Cube_PShader.hlsl">

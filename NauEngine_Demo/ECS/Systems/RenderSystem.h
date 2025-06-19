@@ -5,7 +5,8 @@
 
 #include "DisplayWindow.h"
 #include "Scene.h"
-#include "Camera.h"
+
+#include "ECS/Entities/Camera.h"
 
 //#include "GBuffer.h"
 

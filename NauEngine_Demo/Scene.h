@@ -1,9 +1,10 @@
 #pragma once
 
+#include "ECS/Entities/Entity.h"
+#include "ECS/Entities/Camera.h"
+
 #include <vector>
 #include <nlohmann_json/json.hpp>
-#include "Entity.h"
-#include "Camera.h"
 
 using json = nlohmann::json;
 

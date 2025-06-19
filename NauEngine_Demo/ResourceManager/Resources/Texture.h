@@ -1,10 +1,11 @@
 #pragma once
 
-#include <d3d11.h>
-#include <assimp/material.h>
-#include <wrl.h>
 #include "StringHelper.h"
 #include "Resource.h"
+
+#include <wrl.h>
+#include <d3d11.h>
+#include <assimp/material.h>
 #include <DDSTextureLoader.h>
 
 class SE_Color;

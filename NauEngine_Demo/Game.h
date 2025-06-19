@@ -2,7 +2,7 @@
 
 #include "GameTimer.h"
 #include "Scene.h"
-#include "RenderSystem.h"
+#include "ECS/Systems/RenderSystem.h"
 #include "DisplayWindow.h"
 
 class Game

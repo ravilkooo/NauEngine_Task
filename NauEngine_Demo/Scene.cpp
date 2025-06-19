@@ -1,7 +1,8 @@
 #include "Scene.h"
-#include "SimpleEntity.h"
-#include "PlaneEntity.h"
-#include "CustomEntity.h"
+
+#include "ECS/Entities/SimpleEntity.h"
+#include "ECS/Entities/PlaneEntity.h"
+#include "ECS/Entities/CustomEntity.h"
 
 Scene::Scene()
 {

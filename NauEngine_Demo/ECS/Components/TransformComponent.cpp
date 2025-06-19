@@ -1,6 +1,6 @@
 #include "TransformComponent.h"
-#include "TransformCBuffer.h"
 
+#include "ResourceManager/Resources/TransformCBuffer.h"
 
 
 TransformComponent::TransformComponent()

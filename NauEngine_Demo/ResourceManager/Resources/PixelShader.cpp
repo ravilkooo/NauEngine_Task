@@ -1,4 +1,5 @@
 #include "PixelShader.h"
+
 #include <iostream>
 
 PixelShader::PixelShader(ID3D11Device* device, LPCWSTR filePath)
