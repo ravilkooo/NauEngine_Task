@@ -4,21 +4,29 @@ PlaneEntity::PlaneEntity(ID3D11Device* device) {
 	auto& renderComp = this->AddComponent<RenderComponent>();
 
 	renderComp.mesh = ResourceManager::Instance().Load<Mesh>("./Models/plane.obj", device, "./Models/plane.obj");
-
-	renderComp.vertexShader = ResourceManager::Instance().Load<VertexShader>("./Shaders/Cube_VShader.hlsl", device, L"./Shaders/Cube_VShader.hlsl");
-	renderComp.pixelShader = ResourceManager::Instance().Load<PixelShader>("./Shaders/Cube_PShader.hlsl", device, L"./Shaders/Cube_PShader.hlsl");
+	renderComp.texture = ResourceManager::Instance().Load<Texture>("./Textures/plane_Diffuse.dds", device, "./Textures/plane_Diffuse.dds");
+	renderComp.vertexShader = ResourceManager::Instance().Load<VertexShader>("./Shaders/Custom_VShader.hlsl", device, L"./Shaders/Custom_VShader.hlsl");
+	renderComp.pixelShader = ResourceManager::Instance().Load<PixelShader>("./Shaders/Custom_PShader.hlsl", device, L"./Shaders/Custom_PShader.hlsl");
 
 	auto& transformComp = this->AddComponent<TransformComponent>(device);
-	transformComp.SetOffset({ 4, 0, 0 });
+	// Too big mesh -> Resizing
+	transformComp.SetScaleFactor(0.05f);
+
+	// Align plane
+	transformComp.SetLocalRotation({ 0, DirectX::XM_PIDIV2, 0 });
+
+	// Setting initial position
+	transformComp.SetWorldMatrix(Matrix::CreateTranslation({ 5,0,0 }));
 }
 
 void PlaneEntity::Tick(float deltaTime) {
-	accumTime += deltaTime;
 	auto& transformComp = this->GetComponent<TransformComponent>();
 
-	transformComp.SetLocalRotation({ 0, -accumTime - DirectX::XM_PIDIV2, 0 });
-	transformComp.SetOffset({ 4.0f * cos(accumTime), 0,
-		4.0f * sin(accumTime) });
+	// Rotating object around Y-axis
+	transformComp.TransformWorldMatrix(Matrix::CreateFromAxisAngle({ 0,1,0 }, deltaTime));
+
+	// Local rotation
+	transformComp.LocalRotate({ 4*deltaTime, 0, 0 });
 }
 
 std::string PlaneEntity::getTypeName() const

@@ -1,7 +1,11 @@
 {
     "resources": [
         {
-            "key": "./Models/gamepad.obj",
+            "key": "./Models/plane.obj",
+            "type": "Mesh"
+        },
+        {
+            "key": "./Models/MissedMesh.obj",
             "type": "Mesh"
         },
         {
@@ -21,15 +25,19 @@
             "type": "PixelShader"
         },
         {
-            "key": "./Models/plane.obj",
-            "type": "Mesh"
-        },
-        {
             "key": "./Models/horse.obj",
             "type": "Mesh"
         },
         {
+            "key": "./Textures/plane_Diffuse.dds",
+            "type": "Texture"
+        },
+        {
             "key": "./Textures/horse_Diffuse.dds",
+            "type": "Texture"
+        },
+        {
+            "key": "",
             "type": "Texture"
         }
     ]

@@ -37,6 +37,7 @@ public:
 
     // Load/save scene
     void LoadScene();
+    void SaveScene();
 
 
 

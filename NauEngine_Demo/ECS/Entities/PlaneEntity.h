@@ -11,6 +11,7 @@
 #include "ResourceManager/Resources/Mesh.h"
 #include "ResourceManager/Resources/TransformCBuffer.h"
 
+// Rotating plane around Y-axis
 class PlaneEntity :
     public Entity
 {
@@ -18,8 +19,6 @@ public:
 	PlaneEntity() = default;
 	PlaneEntity(ID3D11Device* device);
 	void Tick(float deltaTime) override;
-
-	float accumTime;
 
 	// Serialization
 	std::string getTypeName() const override;

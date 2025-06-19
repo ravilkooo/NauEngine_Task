@@ -5,23 +5,28 @@ SimpleEntity::SimpleEntity(ID3D11Device* device, int num) {
 	auto& renderComp = this->AddComponent<RenderComponent>();
 
 	//renderComp.mesh = CreateUnwrappedCubeMesh(device);
-	renderComp.mesh = ResourceManager::Instance().Load<Mesh>("./Models/gamepad.obj", device, "./Models/gamepad.obj");
+	renderComp.mesh = ResourceManager::Instance().Load<Mesh>("./Models/MissedMesh.obj", device, "./Models/MissedMesh.obj");
 
 	renderComp.vertexShader = ResourceManager::Instance().Load<VertexShader>("./Shaders/Cube_VShader.hlsl", device, L"./Shaders/Cube_VShader.hlsl");
 	renderComp.pixelShader = ResourceManager::Instance().Load<PixelShader>("./Shaders/Cube_PShader.hlsl", device, L"./Shaders/Cube_PShader.hlsl");
 
 	auto& transformComp = this->AddComponent<TransformComponent>(device);
-	transformComp.SetOffset({ 0, 0, num * 3.0f / 100 });
+
+	// Different sizes for cubes
 	transformComp.SetScaleFactor(num * 2.0f / 100);
+
+	// Setting initial position
+	transformComp.SetWorldMatrix(Matrix::CreateTranslation({ 4.0f * transformComp.scaleFactor.x, 0, num * 3.0f / 100 }));
 }
 
 void SimpleEntity::Tick(float deltaTime) {
-	accumTime += deltaTime;
 	auto& transformComp = this->GetComponent<TransformComponent>();
+
+	// Local rotation
 	transformComp.LocalRotate({ deltaTime * 2, 0, 0 });
 
-	transformComp.SetOffset({ 4.0f * transformComp.scaleFactor.x * cos(transformComp.scaleFactor.x * accumTime),
-		4.0f * transformComp.scaleFactor.x * sin(transformComp.scaleFactor.x * accumTime), 3});
+	// Rotating object around Z-axis
+	transformComp.TransformWorldMatrix(Matrix::CreateFromAxisAngle({ 0,0,1 }, transformComp.scaleFactor.x * deltaTime));
 }
 
 std::string SimpleEntity::getTypeName() const

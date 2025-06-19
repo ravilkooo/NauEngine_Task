@@ -30,20 +30,7 @@ Game::Game()
 	if (answer)
 	{
 		// Deserialization
-
-		json resources_data;
-		std::ifstream f("resources.json");
-		f >> resources_data;
-		f.close();
-		ResourceManager::Instance().from_json(renderSystem->GetDevice(), resources_data);
-
-		json scene_data;
-		f.open("scene.json");
-		f >> scene_data;
-		f.close();
-		scene->from_json(renderSystem->GetDevice(), scene_data);
-		renderSystem->SetMainCamera(scene->mainCamera);
-
+		LoadScene();
 	}
 	else {
 		// Serialization
@@ -53,26 +40,24 @@ Game::Game()
 		* Add new Entities HERE
 		**/
 
+		// Летающие кубики
+		// Floating cubes
 		for (size_t i = 0; i < 25; i++)
 		{
 			scene->AddEntity(std::make_unique<SimpleEntity>(renderSystem->GetDevice(), 4 * i * 1));
 		}
+
+		// Летающий самолёт
+		// Floating plane
 		scene->AddEntity(std::make_unique<PlaneEntity>(renderSystem->GetDevice()));
+
+		// Кастомный объект
+		// Cusstom object
 		scene->AddEntity(std::make_unique<CustomEntity>(renderSystem->GetDevice(),
 			"./Models/horse.obj", "./Textures/horse_Diffuse.dds"));
 		
 		scene->mainCamera = renderSystem->GetMainCamera();
 		scene->mainCamera->SetPosition({ 0,0,-10 });
-
-		json data;
-		std::ofstream outfstream("scene.json");
-		scene->to_json(data);
-		outfstream << std::setw(4) << data << std::endl;
-
-		data.clear();
-		outfstream.open("resources.json");
-		ResourceManager::Instance().to_json(data);
-		outfstream << std::setw(4) << data << std::endl;
 	}
 
 
@@ -134,10 +119,31 @@ void Game::Render()
 
 void Game::LoadScene()
 {
-	json data;
-	std::ifstream in_fstream("scene.json");
-	scene->from_json(renderSystem->GetDevice(), data);
+	json resources_data;
+	std::ifstream f("resources.json");
+	f >> resources_data;
+	f.close();
+	ResourceManager::Instance().from_json(renderSystem->GetDevice(), resources_data);
+
+	json scene_data;
+	f.open("scene.json");
+	f >> scene_data;
+	f.close();
+	scene->from_json(renderSystem->GetDevice(), scene_data);
 	renderSystem->SetMainCamera(scene->mainCamera);
+}
+
+void Game::SaveScene()
+{
+	json data;
+	std::ofstream outfstream("scene.json");
+	scene->to_json(data);
+	outfstream << std::setw(4) << data << std::endl;
+
+	data.clear();
+	outfstream.open("resources.json");
+	ResourceManager::Instance().to_json(data);
+	outfstream << std::setw(4) << data << std::endl;
 }
 
 Game::~Game()
@@ -169,6 +175,15 @@ void Game::HandleKeyDown(Keys key) {
 	if (key == Keys::D)
 	{
 		renderSystem->GetMainCamera()->MoveRight(deltaTime * 10.0f);
+	}
+
+	if (key == Keys::D1)
+	{
+		SaveScene();
+	}
+	if (key == Keys::D2)
+	{
+		LoadScene();
 	}
 }
 

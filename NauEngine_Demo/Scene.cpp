@@ -43,6 +43,8 @@ void Scene::to_json(json& j)
 
 void Scene::from_json(ID3D11Device* device, const json& j)
 {
+    this->entities.clear();
+
     for (const auto& j_e : j["entities"]) {
         std::string type = j_e.at("type").get<std::string>();
         std::unique_ptr<Entity> entity;

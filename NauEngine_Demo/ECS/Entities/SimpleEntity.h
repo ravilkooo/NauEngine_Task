@@ -12,14 +12,13 @@
 #include "ResourceManager/Resources/Mesh.h"
 #include "ResourceManager/Resources/TransformCBuffer.h"
 
+// Floating cubes
 class SimpleEntity : public Entity
 {
 public:
 	SimpleEntity() = default;
 	SimpleEntity(ID3D11Device* device, int num);
 	void Tick(float deltaTime) override;
-
-	float accumTime;
 
 	// Serialization
 	std::string getTypeName() const override;

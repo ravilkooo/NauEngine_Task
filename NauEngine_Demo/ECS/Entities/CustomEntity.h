@@ -11,6 +11,7 @@
 #include "ResourceManager/Resources/Mesh.h"
 #include "ResourceManager/Resources/TransformCBuffer.h"
 
+// Entity with custom mesh and texture
 class CustomEntity :
 	public Entity
 {
@@ -19,7 +20,7 @@ public:
 	CustomEntity(ID3D11Device* device, std::string meshFilePath, std::string textureFilePath);
 	void Tick(float deltaTime) override;
 
-	float accumTime;
+	float accumTime = 0.0f;
 
 	// Serialization
 	std::string getTypeName() const override;

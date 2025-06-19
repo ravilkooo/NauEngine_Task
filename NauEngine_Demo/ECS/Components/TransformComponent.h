@@ -31,16 +31,11 @@ public:
 
     // void Delete() override {};
 
+    // Local Transforms
     Vector3 localOffset = { 0, 0, 0 };
-    // Pitch (x-axis), Yaw (y-axis), Roll (z-axis)
     Vector3 localRotation = { 0, 0, 0 };
     Vector3 scaleFactor = { 1, 1, 1 };
 
-    Matrix worldMatrix;
-
-    const std::type_info& getType() const override {
-        return typeid(TransformComponent);
-    }
 
     void SetOffset(Vector3 newPosition);
     // Pitch (x-axis), Yaw (y-axis), Roll (z-axis)
@@ -61,14 +56,19 @@ public:
 
     Matrix GetLocalTransform();
 
+    // Global Transforms
+    Matrix worldMatrix;
+
     Matrix GetWorldMatrix();
     void SetWorldMatrix(Matrix newWorldMatrix);
     void TransformWorldMatrix(Matrix newTransform);
     
-
+    // Full Transforms
     Matrix GetFullTransform();
 
-    Vector3 SwapRotXYZToPitchYallRoll(Vector3 rot) { return { rot.y, rot.x, rot.x }; };
+    const std::type_info& getType() const override {
+        return typeid(TransformComponent);
+    }
 
     // Serialization
     std::string getTypeName() const override;
