@@ -35,7 +35,7 @@ public:
     Vector3 localOffset = { 0, 0, 0 };
     Vector3 localRotation = { 0, 0, 0 };
     Vector3 scaleFactor = { 1, 1, 1 };
-
+    Matrix localCustomRotationMatrix = Matrix::Identity;
 
     void SetOffset(Vector3 newPosition);
     // Pitch (x-axis), Yaw (y-axis), Roll (z-axis)
@@ -47,6 +47,7 @@ public:
     void AddOffset(Vector3 moveVector);
     void LocalRotate(Vector3 pitchYawRoll);
     void LocalRotate(Quaternion rotQuaternion);
+    void LocalRotate(Vector3 axis, float angle);
     void Scale(float newScaleFactor);
     void Scale(Vector3 newScaleFactor);
 

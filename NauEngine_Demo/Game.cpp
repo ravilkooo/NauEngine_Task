@@ -27,8 +27,15 @@ Game::Game()
 	renderSystem = std::make_unique<RenderSystem>(&displayWindow);
 	scriptingSystem = std::make_unique<ScriptingSystem>();
 
+	std::cout << "Controls:\n";
+	std::cout << "- WASD - forward/backward, left/right\n";
+	std::cout << "- Q/E - down/up\n";
+	std::cout << "- Esc - exit\n";
+	std::cout << "- <1> - Save scene\n";
+	std::cout << "- <2> - Load last scene\n\n";
+
 	int answer = 0;
-	std::cout << "New scene (0) or Saved scene (1) ? :";
+	std::cout << "Create new scene (0) or Load saved scene (1) ? :";
 	std::cin >> answer;
 
 	if (answer)
@@ -55,12 +62,14 @@ Game::Game()
 		// Floating plane
 		scene->AddEntity(std::make_unique<PlaneEntity>(renderSystem->GetDevice()));
 
-		// Кастомный объект - можно задать позицию и масштаб
-		// Cusstom object - you can set initial position and initial scale
+		// Кастомный объект - можно задать позицию, масштаб и локальный поворот
+		// Cusstom object - you can set initial position, initial scale and initial rotation
 		scene->AddEntity(std::make_unique<CustomEntity>(renderSystem->GetDevice(),
-			"./Models/horse.obj", "./Textures/horse_Diffuse.dds"));
+			"./Models/horse.obj", "./Textures/horse_Diffuse.dds", "./LuaScripts/eight.lua",
+			Vector3(0, 0, 0), Vector3(1, 1, 1), Vector3(0,-XM_PIDIV2,0)));
 		scene->AddEntity(std::make_unique<CustomEntity>(renderSystem->GetDevice(),
-			"./Models/gamepad.obj", "./Textures/gamepad_Diffuse.dds", Vector3(10, 0, 0), Vector3(0.05, 0.05, 0.05 )));
+			"./Models/gamepad.obj", "./Textures/gamepad_Diffuse.dds", "./LuaScripts/rotateY.lua",
+			Vector3(10, 0, 0), Vector3(0.03, 0.03, 0.03 ), Vector3(0, 0, 0)));
 
 
 		scene->mainCamera = renderSystem->GetMainCamera();

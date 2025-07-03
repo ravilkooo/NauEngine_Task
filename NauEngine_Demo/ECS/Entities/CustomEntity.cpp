@@ -1,7 +1,7 @@
 #include "CustomEntity.h"
 
-CustomEntity::CustomEntity(ID3D11Device* device, std::string meshFilePath, std::string textureFilePath,
-	Vector3 initPosition, Vector3 initScale)
+CustomEntity::CustomEntity(ID3D11Device* device, std::string meshFilePath, std::string textureFilePath, std::string scriptFilePath,
+	Vector3 initPosition, Vector3 initScale, Vector3 initRotation)
 {
 	auto& renderComp = this->AddComponent<RenderComponent>();
 
@@ -13,13 +13,14 @@ CustomEntity::CustomEntity(ID3D11Device* device, std::string meshFilePath, std::
 	auto& transformComp = this->AddComponent<TransformComponent>(device);
 	transformComp.SetWorldMatrix(Matrix::CreateTranslation(initPosition));
 	transformComp.SetScaleFactor(initScale);
+	transformComp.SetLocalRotation(initRotation);
 
-	auto& entity = this->AddComponent<LuaScriptComponent>("LuaScripts/example.lua");
-
+	auto& scriptComp = this->AddComponent<LuaScriptComponent>();
+	scriptComp.scriptFile = scriptFilePath;
 }
 
-CustomEntity::CustomEntity(ID3D11Device* device, std::string meshFilePath, std::string textureFilePath) :
-	CustomEntity(device, meshFilePath, textureFilePath, { 0.0f, 0.0f, 0.0f }, {1.0f, 1.0f, 1.0f})
+CustomEntity::CustomEntity(ID3D11Device* device, std::string meshFilePath, std::string textureFilePath, std::string scriptFilePath) :
+	CustomEntity(device, meshFilePath, textureFilePath, scriptFilePath, { 0.0f, 0.0f, 0.0f }, {1.0f, 1.0f, 1.0f}, {0.0f, 0.0f, 0.0f})
 {
 }
 
@@ -57,6 +58,9 @@ void CustomEntity::from_json(ID3D11Device* device, const json& j)
 		}
 		else if (type == "TransformComponent") {
 			component = std::make_unique<TransformComponent>();
+		}
+		else if (type == "LuaScriptComponent") {
+			component = std::make_unique<LuaScriptComponent>();
 		}
 		else {
 			continue;

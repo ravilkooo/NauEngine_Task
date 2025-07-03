@@ -10,8 +10,6 @@ class LuaScriptComponent :
 public:
     std::string scriptFile;
 
-    LuaScriptComponent(const std::string& file) : scriptFile(file) {}
-
     ~LuaScriptComponent() = default;
 
     const std::type_info& getType() const override {

@@ -18,9 +18,9 @@ class CustomEntity :
 {
 public:
 	CustomEntity() = default;
-	CustomEntity(ID3D11Device* device, std::string meshFilePath, std::string textureFilePath,
-		Vector3 initPosition, Vector3 initScale);
-	CustomEntity(ID3D11Device* device, std::string meshFilePath, std::string textureFilePath);
+	CustomEntity(ID3D11Device* device, std::string meshFilePath, std::string textureFilePath, std::string scriptFilePath,
+		Vector3 initPosition, Vector3 initScale, Vector3 initRotation);
+	CustomEntity(ID3D11Device* device, std::string meshFilePath, std::string textureFilePath, std::string scriptFilePath);
 	void Tick(float deltaTime) override;
 
 	float accumTime = 0.0f;

@@ -61,6 +61,11 @@ void TransformComponent::LocalRotate(Quaternion rotQuaternion)
     localRotation = (Quaternion::CreateFromYawPitchRoll(localRotation) * rotQuaternion).ToEuler();
 }
 
+void TransformComponent::LocalRotate(Vector3 axis, float angle)
+{
+    localCustomRotationMatrix *= Matrix::CreateFromAxisAngle(axis, angle);
+}
+
 void TransformComponent::Scale(float newScaleFactor)
 {
     scaleFactor = scaleFactor * newScaleFactor;
@@ -88,7 +93,7 @@ Matrix TransformComponent::GetScaleMatrix()
 
 Matrix TransformComponent::GetLocalTransform()
 {
-    return GetScaleMatrix() * GetLocalRotationMatrix() * GetOffsetMatrix();
+    return GetScaleMatrix() * GetLocalRotationMatrix() * localCustomRotationMatrix * GetOffsetMatrix();
 }
 
 Matrix TransformComponent::GetWorldMatrix()

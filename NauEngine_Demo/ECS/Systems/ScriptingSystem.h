@@ -15,15 +15,14 @@ public:
                 lua_State* L = luaL_newstate();
                 luaL_openlibs(L);
 
-                // Пробросить API управления TransformComponent
                 RegisterTransformAPI(L, entity.get());
 
-                // Загрузить и выполнить скрипт
+                // Load script
                 if (luaL_dofile(L, scriptComp.scriptFile.c_str()) != LUA_OK) {
                     std::cerr << lua_tostring(L, -1) << std::endl;
                 }
 
-                // Вызвать функцию update(dt)
+                // update(dt)
                 luabridge::LuaRef update = luabridge::getGlobal(L, "update");
                 if (update.isFunction()) {
                     update(deltaTime);
@@ -38,7 +37,6 @@ public:
         auto& transform = entity->GetComponent<TransformComponent>();
         luabridge::getGlobalNamespace(L)
             .beginNamespace("engine")
-   
             .addFunction("get_position", [&transform]() {
             auto pos = transform.GetWorldPosition();
             return std::make_tuple(pos.x, pos.y, pos.z);
@@ -47,7 +45,7 @@ public:
             transform.SetWorldPosition(Vector3(x, y, z));
                 })
             .addFunction("rotate", [&transform](float axisX, float axisY, float axisZ, float angle) {
-            // transform.rotation += {axisX * angle, axisY * angle, axisZ * angle};
+            transform.LocalRotate(Vector3(axisX, axisY, axisZ), angle);
                 })
             .endNamespace();
     }
