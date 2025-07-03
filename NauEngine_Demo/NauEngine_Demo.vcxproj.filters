@@ -138,6 +138,12 @@
     <ClInclude Include="ECS\Systems\RenderSystem.h">
       <Filter>Header Files\ECS\Systems</Filter>
     </ClInclude>
+    <ClInclude Include="ECS\Components\LuaScriptComponent.h">
+      <Filter>Header Files\ECS\Components</Filter>
+    </ClInclude>
+    <ClInclude Include="ECS\Systems\ScriptingSystem.h">
+      <Filter>Header Files\ECS\Systems</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="Scene.cpp">
@@ -208,6 +214,9 @@
     </ClCompile>
     <ClCompile Include="ECS\Systems\RenderSystem.cpp">
       <Filter>Source Files\ECS\Systems</Filter>
+    </ClCompile>
+    <ClCompile Include="ECS\Components\LuaScriptComponent.cpp">
+      <Filter>Source Files\ECS\Component</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

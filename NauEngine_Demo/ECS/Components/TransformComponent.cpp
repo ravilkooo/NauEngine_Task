@@ -106,6 +106,20 @@ void TransformComponent::TransformWorldMatrix(Matrix newTransform)
     worldMatrix = worldMatrix * newTransform;
 }
 
+Vector3 TransformComponent::GetWorldPosition()
+{
+    // std::cout << worldMatrix._41 << ", " << worldMatrix._44 << "\n";
+    return Vector3(
+        worldMatrix._41 / worldMatrix._44,
+        worldMatrix._42 / worldMatrix._44,
+        worldMatrix._43 / worldMatrix._44);
+}
+
+void TransformComponent::SetWorldPosition(Vector3 newPosition)
+{
+    worldMatrix = worldMatrix * Matrix::CreateTranslation(-GetWorldPosition() + newPosition);
+}
+
 Matrix TransformComponent::GetFullTransform()
 {
     return GetLocalTransform() * GetWorldMatrix();

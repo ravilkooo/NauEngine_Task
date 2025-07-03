@@ -151,6 +151,7 @@
   <ItemGroup>
     <ClInclude Include="DisplayWindow.h" />
     <ClInclude Include="ECS\Components\Component.h" />
+    <ClInclude Include="ECS\Components\LuaScriptComponent.h" />
     <ClInclude Include="ECS\Components\RenderComponent.h" />
     <ClInclude Include="ECS\Components\TransformComponent.h" />
     <ClInclude Include="ECS\Entities\Camera.h" />
@@ -159,6 +160,7 @@
     <ClInclude Include="ECS\Entities\PlaneEntity.h" />
     <ClInclude Include="ECS\Entities\SimpleEntity.h" />
     <ClInclude Include="ECS\Systems\RenderSystem.h" />
+    <ClInclude Include="ECS\Systems\ScriptingSystem.h" />
     <ClInclude Include="Game.h" />
     <ClInclude Include="GameTimer.h" />
     <ClInclude Include="ResourceManager\ResourceManager.h" />
@@ -178,6 +180,7 @@
   <ItemGroup>
     <ClCompile Include="DisplayWindow.cpp" />
     <ClCompile Include="ECS\Components\Component.cpp" />
+    <ClCompile Include="ECS\Components\LuaScriptComponent.cpp" />
     <ClCompile Include="ECS\Components\RenderComponent.cpp" />
     <ClCompile Include="ECS\Components\TransformComponent.cpp" />
     <ClCompile Include="ECS\Entities\Camera.cpp" />

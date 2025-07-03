@@ -5,6 +5,7 @@
 #include "DisplayWindow.h"
 
 #include "ECS/Systems/RenderSystem.h"
+#include "ECS/Systems/ScriptingSystem.h"
 
 #include <memory>
 
@@ -25,6 +26,8 @@ public:
     std::unique_ptr<Scene> scene;
 
     std::unique_ptr<RenderSystem> renderSystem;
+    std::unique_ptr<ScriptingSystem> scriptingSystem;
+
 
     DisplayWindow displayWindow;
 

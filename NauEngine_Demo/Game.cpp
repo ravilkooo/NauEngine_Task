@@ -25,6 +25,7 @@ Game::Game()
 	displayWindow = DisplayWindow(this, applicationName, hInstance, winWidth, winHeight);
 
 	renderSystem = std::make_unique<RenderSystem>(&displayWindow);
+	scriptingSystem = std::make_unique<ScriptingSystem>();
 
 	int answer = 0;
 	std::cout << "New scene (0) or Saved scene (1) ? :";
@@ -130,6 +131,7 @@ void Game::Run()
 }
 
 void Game::Tick(float deltaTime) {
+	scriptingSystem->Update(*scene, deltaTime);
 	scene->Tick(deltaTime);
 }
 

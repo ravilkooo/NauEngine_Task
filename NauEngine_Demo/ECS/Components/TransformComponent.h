@@ -62,6 +62,8 @@ public:
     Matrix GetWorldMatrix();
     void SetWorldMatrix(Matrix newWorldMatrix);
     void TransformWorldMatrix(Matrix newTransform);
+    Vector3 GetWorldPosition();
+    void SetWorldPosition(Vector3 newPosition);
     
     // Full Transforms
     Matrix GetFullTransform();

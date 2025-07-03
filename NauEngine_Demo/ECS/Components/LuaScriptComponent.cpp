@@ -1,0 +1,15 @@
+#include "LuaScriptComponent.h"
+
+std::string LuaScriptComponent::getTypeName() const
+{
+	return "LuaScriptComponent";
+}
+
+void LuaScriptComponent::to_json(json& j)
+{
+	j = json{};
+}
+
+void LuaScriptComponent::from_json(ID3D11Device* device, const json& j)
+{
+}

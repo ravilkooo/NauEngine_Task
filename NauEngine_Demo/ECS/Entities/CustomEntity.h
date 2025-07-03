@@ -3,6 +3,7 @@
 
 #include "ECS/Components/RenderComponent.h"
 #include "ECS/Components/TransformComponent.h"
+#include "ECS/Components/LuaScriptComponent.h"
 
 #include "ResourceManager/ResourceManager.h"
 

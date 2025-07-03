@@ -13,6 +13,9 @@ CustomEntity::CustomEntity(ID3D11Device* device, std::string meshFilePath, std::
 	auto& transformComp = this->AddComponent<TransformComponent>(device);
 	transformComp.SetWorldMatrix(Matrix::CreateTranslation(initPosition));
 	transformComp.SetScaleFactor(initScale);
+
+	auto& entity = this->AddComponent<LuaScriptComponent>("LuaScripts/example.lua");
+
 }
 
 CustomEntity::CustomEntity(ID3D11Device* device, std::string meshFilePath, std::string textureFilePath) :
